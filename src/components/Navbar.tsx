@@ -12,7 +12,7 @@ export default function Navbar() {
         <a href="#industries">Industries</a>
       </div>
       <div className={styles.actions}>
-        <a href="/login" className={styles.loginBtn}>Log in</a>
+        <a href="/https://belvorodashboard.com/" className={styles.loginBtn}>Log in</a>
         <a href="/get-started" className={styles.startBtn}>Get Started →</a>
       </div>
     </nav>
