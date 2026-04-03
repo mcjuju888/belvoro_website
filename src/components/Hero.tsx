@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import styles from './Hero.module.css'
 
@@ -24,15 +23,6 @@ export default function Hero() {
         <div className={styles.btns}>
           <a href="/get-started" className={styles.btnMain}>Get Started Free</a>
           <a href="/watch-demo" className={styles.btnGhost}>Watch Demo →</a>
-        </div>
-
-        
-        <div className={styles.social}> 
-          <span className={styles.socialLabel}>Trusted by</span>
-          <div className={styles.clientPill}>
-            <div className={styles.clientAvatar}>DH</div>
-            <span className={styles.clientName}>DH Auto Group</span>
-          </div>
         </div>
       </div>
       

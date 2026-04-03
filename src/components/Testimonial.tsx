@@ -10,10 +10,10 @@ export default function Testimonial() {
             "Belvoro handles our incoming calls better than we expected. It books appointments, answers questions, and makes sure no lead goes cold."
           </p>
           <div className={styles.attr}>
-            <div className={styles.avatar}>DH</div>
+            <div className={styles.avatar}>HH</div>
             <div>
-              <div className={styles.name}>General Manager</div>
-              <div className={styles.role}>DH Auto Group, Toronto</div>
+              <div className={styles.name}> Manager</div>
+              <div className={styles.role}>Home Highlight Services, Toronto</div>
             </div>
           </div>
         </div>
