@@ -26,6 +26,7 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className={styles.section}>
+      <div className="container">
       <div className={styles.eyebrow}>Process</div>
       <h2 className={styles.heading}>
         Live in days, <i>not months</i>
@@ -41,6 +42,7 @@ export default function HowItWorks() {
             <p className={styles.stepDesc}>{s.desc}</p>
           </div>
         ))}
+      </div>
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  padding: 100px 48px;
+  padding: 100px 0;
   text-align: center;
   border-top: 1px solid #F0F0F0;
 }
@@ -76,7 +76,7 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: 72px 24px; }
+  .section { padding: 72px 0; }
   .heading { font-size: 38px; }
   .btns { flex-direction: column; align-items: center; }
 }

@@ -3,6 +3,7 @@ import styles from './CTA.module.css'
 export default function CTA() {
   return (
     <section className={styles.section}>
+      <div className="container">
       <div className={styles.pill}>No templates. Built for you.</div>
       <h2 className={styles.heading}>
         Ready to put your front desk<br />
@@ -12,6 +13,7 @@ export default function CTA() {
       <div className={styles.btns}>
         <a href="/get-started" className={styles.btnDark}>Get Started Free</a>
         <a href="/watch-demo" className={styles.btnOutline}>Watch Demo →</a>
+      </div>
       </div>
     </section>
   )

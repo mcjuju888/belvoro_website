@@ -3,7 +3,7 @@ node_modules/
 
 # next.js build output
 .next/
-out/
+out/ad
 
 # env files
 .env

@@ -24,6 +24,7 @@ const industries = [
 export default function Industries() {
   return (
     <section id="industries" className={styles.section}>
+      <div className="container">
       <div className={styles.eyebrow}>Industries</div>
       <h2 className={styles.heading}>
         Built for businesses that<br />
@@ -49,6 +50,7 @@ export default function Industries() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   )

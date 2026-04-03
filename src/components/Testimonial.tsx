@@ -3,6 +3,7 @@ import styles from './Testimonial.module.css'
 export default function Testimonial() {
   return (
     <section className={styles.section}>
+      <div className="container">
       <div className={styles.inner}>
         <div className={styles.content}>
           <p className={styles.quote}>
@@ -17,6 +18,7 @@ export default function Testimonial() {
           </div>
         </div>
         <div className={styles.bigQuote}>"</div>
+      </div>
       </div>
     </section>
   )

@@ -1,12 +1,15 @@
+import React from 'react'
+import Image from 'next/image'
 import styles from './Hero.module.css'
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
+      <div className={`container ${styles.heroContent}`}>
       <div className={styles.left}>
         <div className={styles.badge}>
           <div className={styles.badgeDot}><span /></div>
-          <span className={styles.badgeText}>AI front desk — live in days</span>
+          <span className={styles.badgeText}>AI front desk — Accepting new business now</span>
         </div>
 
         <h1 className={styles.heading}>
@@ -15,7 +18,7 @@ export default function Hero() {
         </h1>
 
         <p className={styles.sub}>
-          Belvoro answers every call, books appointments, qualifies leads, and follows up by SMS — around the clock, without hiring anyone.
+          Belvoro answers every call, books appointments, qualifies leads, and follows up by SMS, around the clock, without hiring anyone.
         </p>
 
         <div className={styles.btns}>
@@ -23,7 +26,8 @@ export default function Hero() {
           <a href="/watch-demo" className={styles.btnGhost}>Watch Demo →</a>
         </div>
 
-        <div className={styles.social}>
+        
+        <div className={styles.social}> 
           <span className={styles.socialLabel}>Trusted by</span>
           <div className={styles.clientPill}>
             <div className={styles.clientAvatar}>DH</div>
@@ -31,63 +35,17 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
+      
       <div className={styles.right}>
-        <div className={styles.card}>
-          <div className={styles.cardHead}>
-            <span className={styles.cardTitle}>Live Dashboard</span>
-            <div className={styles.liveIndicator}>
-              <div className={styles.liveDot} />
-              Live
-            </div>
-          </div>
-          <div className={styles.cardBody}>
-            <div className={styles.row}>
-              <div className={styles.rowLeft}>
-                <div className={styles.icon}>📞</div>
-                <div>
-                  <div className={styles.rowTitle}>Incoming call</div>
-                  <div className={styles.rowSub}>John M. — trade-in inquiry</div>
-                </div>
-              </div>
-              <span className={`${styles.badge2} ${styles.badgeGreen}`}>Booked</span>
-            </div>
-            <div className={styles.row}>
-              <div className={styles.rowLeft}>
-                <div className={styles.icon}>💬</div>
-                <div>
-                  <div className={styles.rowTitle}>SMS sent</div>
-                  <div className={styles.rowSub}>Appointment reminder — 2pm</div>
-                </div>
-              </div>
-              <span className={`${styles.badge2} ${styles.badgeGray}`}>Delivered</span>
-            </div>
-            <div className={styles.row}>
-              <div className={styles.rowLeft}>
-                <div className={styles.icon}>🎯</div>
-                <div>
-                  <div className={styles.rowTitle}>Lead qualified</div>
-                  <div className={styles.rowSub}>Sarah K. — 2022 Honda CRV</div>
-                </div>
-              </div>
-              <span className={`${styles.badge2} ${styles.badgeOrange}`}>Hot lead</span>
-            </div>
-            <div className={styles.statRow}>
-              <div className={styles.stat}>
-                <div className={styles.statNum}><em>24</em></div>
-                <div className={styles.statLabel}>Calls today</div>
-              </div>
-              <div className={styles.stat}>
-                <div className={styles.statNum}>8</div>
-                <div className={styles.statLabel}>Booked</div>
-              </div>
-              <div className={styles.stat}>
-                <div className={styles.statNum}><em>0</em></div>
-                <div className={styles.statLabel}>Missed</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Image
+          src="/dashboard-preview.png"
+          alt="Belvoro dashboard preview"
+          width={600}
+          height={500}
+          className={styles.heroImage}
+          priority
+        />
+      </div>
       </div>
     </section>
   )

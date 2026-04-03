@@ -1,0 +1,272 @@
+.main {
+  background: #fff;
+  min-height: calc(100vh - 62px);
+  padding: 72px 0 96px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* FORM CARD */
+.formCard {
+  background: #fff;
+  border: 1px solid #F0F0F0;
+  border-radius: 20px;
+  padding: 48px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #209FA8;
+  margin-bottom: 14px;
+}
+
+.heading {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: #0A0A0A;
+  letter-spacing: -1px;
+  line-height: 1.08;
+  margin-bottom: 12px;
+}
+
+.heading i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.sub {
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 36px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0A0A0A;
+  letter-spacing: -0.1px;
+}
+
+.input {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: #0A0A0A;
+  background: #fff;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+  appearance: none;
+}
+
+.input:focus {
+  border-color: #209FA8;
+}
+
+.input::placeholder {
+  color: #ccc;
+}
+
+.textarea {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: #0A0A0A;
+  background: #fff;
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s;
+  line-height: 1.6;
+}
+
+.textarea:focus {
+  border-color: #209FA8;
+}
+
+.textarea::placeholder {
+  color: #ccc;
+}
+
+.submitBtn {
+  background: #209FA8;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  background: #18858D;
+}
+
+.submitNote {
+  font-size: 12px;
+  color: #ccc;
+  text-align: center;
+  margin-top: -8px;
+  font-weight: 300;
+}
+
+/* INFO PANEL */
+.infoPanel {
+  padding-top: 8px;
+}
+
+.infoHeading {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #0A0A0A;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  margin-bottom: 36px;
+}
+
+.infoHeading i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.stepNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #EBF9FA;
+  color: #209FA8;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepContent {
+  padding-top: 4px;
+}
+
+.stepTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin-bottom: 5px;
+  letter-spacing: -0.2px;
+}
+
+.stepDesc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.clientBox {
+  background: #F4FCFC;
+  border: 1px solid #D8F0EE;
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+
+.clientBoxTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin-bottom: 5px;
+}
+
+.clientBoxText {
+  font-size: 13px;
+  color: #aaa;
+  font-weight: 300;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.clientBoxLink {
+  font-size: 13px;
+  color: #209FA8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.clientBoxLink:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 40px;
+  }
+  .main {
+    padding: 48px 0 72px;
+  }
+  .formCard {
+    padding: 28px 24px;
+  }
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+  .heading {
+    font-size: 32px;
+  }
+}

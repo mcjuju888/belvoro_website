@@ -73,6 +73,7 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className={styles.section}>
+      <div className="container">
       <div className={styles.eyebrow}>What Belvoro does</div>
       <h2 className={styles.heading}>
         Everything your front desk<br />
@@ -92,6 +93,7 @@ export default function Features() {
             <p className={styles.cardDesc}>{f.desc}</p>
           </div>
         ))}
+      </div>
       </div>
     </section>
   )
