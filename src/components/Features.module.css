@@ -1,0 +1,108 @@
+.section {
+  padding: 80px 48px;
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.eyebrow {
+  font-size: 11px;
+  color: #209FA8;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.heading {
+  font-family: 'Fraunces', serif;
+  font-size: 44px;
+  color: #0A0A0A;
+  font-weight: 300;
+  letter-spacing: -1.2px;
+  line-height: 1.08;
+  margin-bottom: 12px;
+}
+
+.heading i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.sub {
+  font-size: 15px;
+  color: #aaa;
+  max-width: 400px;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #F0F0F0;
+  border: 1px solid #F0F0F0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card {
+  padding: 30px 28px;
+  background: #fff;
+  transition: background 0.15s;
+}
+
+.card:hover {
+  background: #FAFCFC;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.iconWrap {
+  width: 42px;
+  height: 42px;
+  background: #F4FCFC;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrap svg {
+  width: 19px;
+  height: 19px;
+}
+
+.num {
+  font-size: 11px;
+  color: #E0E0E0;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin-bottom: 7px;
+  letter-spacing: -0.2px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 60px 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .heading { font-size: 34px; }
+}

@@ -1,0 +1,23 @@
+import styles from './Testimonial.module.css'
+
+export default function Testimonial() {
+  return (
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        <div className={styles.content}>
+          <p className={styles.quote}>
+            "Belvoro handles our incoming calls better than we expected. It books appointments, answers questions, and makes sure no lead goes cold."
+          </p>
+          <div className={styles.attr}>
+            <div className={styles.avatar}>DH</div>
+            <div>
+              <div className={styles.name}>General Manager</div>
+              <div className={styles.role}>DH Auto Group, Toronto</div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.bigQuote}>"</div>
+      </div>
+    </section>
+  )
+}

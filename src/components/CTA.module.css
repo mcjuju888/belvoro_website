@@ -1,0 +1,82 @@
+.section {
+  background: #fff;
+  padding: 100px 48px;
+  text-align: center;
+  border-top: 1px solid #F0F0F0;
+}
+
+.pill {
+  display: inline-block;
+  background: #F4FCFC;
+  color: #209FA8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  color: #0A0A0A;
+  letter-spacing: -1.5px;
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+.heading i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.sub {
+  font-size: 15px;
+  color: #aaa;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btnDark {
+  background: #0A0A0A;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.btnDark:hover {
+  background: #209FA8;
+}
+
+.btnOutline {
+  background: #fff;
+  color: #0A0A0A;
+  border: 1px solid #E8E8E8;
+  padding: 13px 28px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: border-color 0.15s;
+}
+
+.btnOutline:hover {
+  border-color: #bbb;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 72px 24px; }
+  .heading { font-size: 38px; }
+  .btns { flex-direction: column; align-items: center; }
+}
