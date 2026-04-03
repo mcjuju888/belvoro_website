@@ -69,7 +69,7 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: 60px 0; }
+  .section { padding: 60px 24px; }
   .inner {
     grid-template-columns: 1fr;
     padding: 36px 28px;

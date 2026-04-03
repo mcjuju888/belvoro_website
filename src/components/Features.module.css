@@ -102,7 +102,7 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding: 60px 0; }
+  .section { padding: 60px 24px; }
   .grid { grid-template-columns: 1fr; }
   .heading { font-size: 34px; }
 }

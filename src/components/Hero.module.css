@@ -128,3 +128,9 @@
   .heading { font-size: 48px; }
   .right { display: none; }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 180px 24px 48px;
+  }
+}

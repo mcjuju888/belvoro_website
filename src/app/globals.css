@@ -23,6 +23,12 @@ body {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;
