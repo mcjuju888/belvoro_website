@@ -9,7 +9,8 @@ const steps = [
   {
     num: '02',
     title: 'Build',
-    desc: 'We design and train your AI agent around your real customer conversations and goals.',
+    desc: "We work alongside you to design and train your AI front desk around your real customer conversations and goals.\
+     Fully customized to your business. No payment until you're satisfied.",
   },
   {
     num: '03',
@@ -29,10 +30,10 @@ export default function HowItWorks() {
       <div className="container">
       <div className={styles.eyebrow}>Process</div>
       <h2 className={styles.heading}>
-        Live in days, <i>not months</i>
+        We handle setup, <i>You handle the business</i>
       </h2>
       <p className={styles.sub}>
-        We handle everything — no technical work required on your end.
+        We handle everything, no technical work required on your end.
       </p>
       <div className={styles.grid}>
         {steps.map((s) => (

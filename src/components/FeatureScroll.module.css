@@ -281,10 +281,9 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 280px);
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   gap: 20px;
   padding: 0 40px;
-  justify-content: center;
 }
 
 .gridCard {
@@ -389,6 +388,30 @@
   color: #209FA8;
 }
 
+.gridCardComingSoon {
+  background: transparent;
+  border: 2px dashed #222;
+  border-radius: 22px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: sprayIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.32s;
+}
+
+.gridCardComingSoon .cardNum { color: #333; }
+.gridCardComingSoon .cardTag {
+  background: #1A1A1A;
+  color: #444;
+}
+.gridCardComingSoon .cardTitle {
+  color: #555;
+  font-size: 20px;
+}
+.gridCardComingSoon .cardDesc { color: #333; }
+
 .desktopOnly {
   display: contents;
 }
@@ -410,7 +433,8 @@
   .mobileOnly {
     display: block;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
   .mobileHeader {
@@ -420,41 +444,76 @@
 
   .mobileGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
   }
 
   .mobileCard {
     background: #fff;
-    border: 1px solid #1E1E1E;
+    border: 1px solid #E8E8E8;
     border-radius: 18px;
-    padding: 22px 20px;
+    padding: 18px 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobileCard:active {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(32, 159, 168, 0.25),
+                0 0 0 1px rgba(32, 159, 168, 0.3);
+    border-color: rgba(32, 159, 168, 0.4);
+  }
+
+  .mobileCard .cardTitle {
+    font-size: 15px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .mobileCard .cardDesc {
+    font-size: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .mobileCard .cardTag {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 
   .mobileCard:nth-child(2) {
-    background: #209FA8;
-    border-color: #209FA8;
+    background: #fff;
+    border: 1px solid #E8E8E8;
   }
-  .mobileCard:nth-child(2) .cardTitle { color: #fff; }
-  .mobileCard:nth-child(2) .cardDesc { color: rgba(255,255,255,0.75); }
-  .mobileCard:nth-child(2) .cardNum { color: rgba(255,255,255,0.5); }
+  .mobileCard:nth-child(2) .cardTitle { color: #0A0A0A; }
+  .mobileCard:nth-child(2) .cardDesc { color: #888; }
+  .mobileCard:nth-child(2) .cardNum { color: #ddd; }
   .mobileCard:nth-child(2) .cardTag {
-    background: rgba(255,255,255,0.2);
-    color: #fff;
+    background: #EBF9FA;
+    color: #209FA8;
   }
 
   .mobileCard:nth-child(5) {
-    background: #111;
-    border-color: #222;
+    background: #fff;
+    border: 1px solid #E8E8E8;
   }
-  .mobileCard:nth-child(5) .cardTitle { color: #fff; }
-  .mobileCard:nth-child(5) .cardDesc { color: #555; }
-  .mobileCard:nth-child(5) .cardNum { color: #333; }
+  .mobileCard:nth-child(5) .cardTitle { color: #0A0A0A; }
+  .mobileCard:nth-child(5) .cardDesc { color: #888; }
+  .mobileCard:nth-child(5) .cardNum { color: #ddd; }
   .mobileCard:nth-child(5) .cardTag {
-    background: #1A1A1A;
+    background: #EBF9FA;
     color: #209FA8;
   }
 

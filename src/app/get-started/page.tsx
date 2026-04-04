@@ -96,7 +96,7 @@ export default function GetStarted() {
                 <div className={styles.stepContent}>
                   <div className={styles.stepTitle}>We review your submission</div>
                   <div className={styles.stepDesc}>
-                    We'll look over your business details and call volume within 24 hours.
+                    We'll look over your business details within 24 hours.
                   </div>
                 </div>
               </div>
@@ -112,13 +112,24 @@ export default function GetStarted() {
               <div className={styles.step}>
                 <div className={styles.stepNum}>3</div>
                 <div className={styles.stepContent}>
-                  <div className={styles.stepTitle}>We build your agent</div>
+                  <div className={styles.stepTitle}>We build your free demo</div>
                   <div className={styles.stepDesc}>
-                    Custom AI built around your business. Live within days.
+                  We create a working AI bot and an automated front desk tailored to your business. No payment until you're fully satisfied with the setup.
+                  </div>
+                </div>
+              </div>
+              <div className={styles.step}>
+                <div className={styles.stepNum}>4</div>
+                <div className={styles.stepContent}>
+                  <div className={styles.stepTitle}>Go live</div>
+                  <div className={styles.stepDesc}>
+                    Once approved, we connect everything and make it live.
                   </div>
                 </div>
               </div>
             </div>
+            
+
 
             <div className={styles.clientBox}>
               <div className={styles.clientBoxTitle}>Already a client?</div>

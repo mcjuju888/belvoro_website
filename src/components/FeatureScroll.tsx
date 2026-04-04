@@ -40,6 +40,18 @@ const features = [
     desc: 'All calls, leads, and bookings flow into a dashboard built specifically for how your business runs.',
     tag: 'Your data',
   },
+  {
+    num: '07',
+    title: 'Email Automation',
+    desc: 'Instantly replies to emails, handles inquiries, and ensures no lead or message goes unanswered.',
+    tag: 'Auto-reply',
+  },
+  {
+    num: '08',
+    title: 'Custom Built For You',
+    desc: 'Not a template bot. Built around your services, workflow, and goals.',
+    tag: 'Fully custom',
+  },
 ]
 
 export default function FeatureScroll() {
@@ -155,6 +167,15 @@ export default function FeatureScroll() {
                   <p className={styles.cardDesc}>{f.desc}</p>
                 </div>
               ))}
+
+              <div className={styles.gridCardComingSoon} style={{ '--gi': 8 } as CSSProperties}>
+                <div className={styles.cardNum}>—</div>
+                <span className={styles.cardTag}>What's next</span>
+                <h3 className={styles.cardTitle}>More coming soon</h3>
+                <p className={styles.cardDesc}>
+                  We're always building. New features and integrations on the way.
+                </p>
+              </div>
             </div>
           ) : (
             <>

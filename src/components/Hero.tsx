@@ -8,7 +8,7 @@ export default function Hero() {
       <div className={styles.left}>
         <div className={styles.badge}>
           <div className={styles.badgeDot}><span /></div>
-          <span className={styles.badgeText}>AI front desk — Accepting new business now</span>
+          <span className={styles.badgeText}>Accepting new business now</span>
         </div>
 
         <h1 className={styles.heading}>
@@ -17,7 +17,7 @@ export default function Hero() {
         </h1>
 
         <p className={styles.sub}>
-          Belvoro answers every call, books appointments, qualifies leads, and follows up by SMS, around the clock, without hiring anyone.
+        Belvoro is the most customizable AI receptionist and automated front desk, tailored to your business. It handles calls, bookings, leads, follow-ups, and more in one unified system.
         </p>
 
         <div className={styles.btns}>

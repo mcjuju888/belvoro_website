@@ -7,9 +7,9 @@ export default function Navbar() {
         Belvoro<em>.</em>ai
       </div>
       <div className={styles.links}>
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#industries">Industries</a>
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#industries">Industries</a>
       </div>
       <div className={styles.actions}>
         <a href="https://belvorodashboard.com" className={styles.loginBtn}>Log in</a>

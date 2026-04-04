@@ -10,8 +10,8 @@ const industries = [
   {
     icon: '🚗',
     title: 'Sales-Driven',
-    desc: 'Dealerships and sales orgs capturing, qualifying, and converting every lead.',
-    tags: ['Lead capture & scoring', 'Trade-in intake', 'Appointment setting'],
+    desc: 'Sales organizations that need to  capture, qualify, and convert every lead.',
+    tags: ['Lead capture & scoring', 'Customer data capture & profile building', 'Appointment setting'],
   },
   {
     icon: '🏢',
