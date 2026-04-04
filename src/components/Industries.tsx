@@ -4,7 +4,7 @@ const industries = [
   {
     icon: '🗓',
     title: 'Appointment-Based',
-    desc: 'Clinics, salons, auto shops — businesses where scheduling drives everything.',
+    desc: 'Clinics, salons, auto shops, businesses where scheduling drives everything.',
     tags: ['Booking & rescheduling', 'SMS reminders', 'No-show reduction'],
   },
   {

@@ -1,0 +1,429 @@
+.section {
+  background: #0A0A0A;
+  padding: 80px 0 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  scroll-margin-top: 70px;
+}
+
+.label {
+  text-align: center;
+  margin-bottom: 56px;
+  z-index: 20;
+  position: relative;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #209FA8;
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-family: 'Fraunces', serif;
+  font-size: 44px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -1.2px;
+  line-height: 1.08;
+}
+
+.heading i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 460px;
+  perspective: 1400px;
+  z-index: 5;
+}
+
+.stageSprayed {
+  height: auto;
+  min-height: 0;
+  perspective: none;
+}
+
+/* BLOCK */
+.block {
+  position: absolute;
+  width: 960px;
+  height: 380px;
+  border-radius: 24px;
+  background: #fff;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+}
+
+.blockVisible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.blockHidden {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
+}
+
+.blockInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.blockEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #209FA8;
+}
+
+.blockTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #0A0A0A;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.blockTitle i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.blockHint {
+  font-size: 13px;
+  color: #aaa;
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+/* CARDS — all use absolute + transition for smooth sliding */
+.card {
+  position: absolute;
+  width: 280px;
+  height: 380px;
+  border-radius: 22px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* CENTER — full size, full opacity, no rotation */
+.cardCenter {
+  background: #fff;
+  border: 1px solid #D8F0EE;
+  transform: translateX(0) rotateY(0deg) scale(1);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 20px 60px rgba(32, 159, 168, 0.15),
+              0 4px 24px rgba(0,0,0,0.12);
+}
+
+/* LEFT — slides to left, rotates slightly, dims */
+.cardLeft {
+  background: #F8F8F8;
+  border: 1px solid #E8E8E8;
+  transform: translateX(-310px) rotateY(22deg) scale(0.9);
+  opacity: 0.55;
+  z-index: 5;
+}
+
+/* RIGHT — slides to right, rotates slightly, dims */
+.cardRight {
+  background: #141414;
+  border: 1px solid #222;
+  transform: translateX(310px) rotateY(-22deg) scale(0.9);
+  opacity: 0.55;
+  z-index: 5;
+}
+
+.cardRight .cardNum { color: #444; }
+.cardRight .cardTitle { color: #fff; }
+.cardRight .cardDesc { color: #666; }
+.cardRight .cardTag {
+  background: #1A1A1A;
+  color: #209FA8;
+}
+
+.cardNum {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ccc;
+  letter-spacing: 0.08em;
+}
+
+.cardTag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  background: #EBF9FA;
+  color: #209FA8;
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+
+.cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0A0A0A;
+  letter-spacing: -0.4px;
+  line-height: 1.25;
+  margin-top: 8px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  transition: all 0.2s ease;
+  color: #0A0A0A;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrowLeft { left: calc(50% - 540px); }
+.arrowRight { right: calc(50% - 540px); }
+
+.arrow:hover {
+  background: #209FA8;
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrowDisabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* DOTS */
+.dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 36px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  transition: all 0.3s ease;
+}
+
+.dotActive {
+  background: #209FA8;
+  width: 24px;
+  border-radius: 100px;
+}
+
+.scrollHint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #444;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  min-height: 20px;
+  text-align: center;
+}
+
+/* GRID — final state after spray */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  padding: 0 40px;
+  justify-content: center;
+}
+
+.gridCard {
+  background: #fff;
+  border: 1px solid #F0F0F0;
+  border-radius: 22px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: scale(0.6) translateY(60px);
+  animation: sprayIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--gi) * 0.08s);
+}
+
+@keyframes sprayIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(60px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.gridCard:nth-child(1) {
+  animation-name: sprayInLeft;
+}
+
+.gridCard:nth-child(3) {
+  animation-name: sprayInRight;
+}
+
+.gridCard:nth-child(4) {
+  animation-name: sprayInLeft;
+  animation-delay: 0.12s;
+}
+
+.gridCard:nth-child(5) {
+  animation-name: sprayInDown;
+  animation-delay: 0.18s;
+}
+
+.gridCard:nth-child(6) {
+  animation-name: sprayInRight;
+  animation-delay: 0.24s;
+}
+
+@keyframes sprayInLeft {
+  0%   { opacity: 0; transform: translateX(-120px) scale(0.7) rotate(-4deg); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+}
+
+@keyframes sprayInRight {
+  0%   { opacity: 0; transform: translateX(120px) scale(0.7) rotate(4deg); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+}
+
+@keyframes sprayInUp {
+  0%   { opacity: 0; transform: translateY(-100px) scale(0.7); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sprayInDown {
+  0%   { opacity: 0; transform: translateY(100px) scale(0.7); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gridCard:nth-child(2) {
+  animation-name: sprayInUp;
+  background: #209FA8;
+  border-color: #209FA8;
+}
+
+.gridCard:nth-child(2) .cardNum { color: rgba(255,255,255,0.5); }
+.gridCard:nth-child(2) .cardTitle { color: #fff; }
+.gridCard:nth-child(2) .cardDesc { color: rgba(255,255,255,0.7); }
+.gridCard:nth-child(2) .cardTag {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.gridCard:nth-child(5) {
+  background: #111;
+  border-color: #222;
+}
+
+.gridCard:nth-child(5) .cardNum { color: #444; }
+.gridCard:nth-child(5) .cardTitle { color: #fff; }
+.gridCard:nth-child(5) .cardDesc { color: #666; }
+.gridCard:nth-child(5) .cardTag {
+  background: #1A1A1A;
+  color: #209FA8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section {
+    min-height: auto;
+    padding: 56px 24px;
+  }
+  .stage {
+    height: auto;
+    flex-direction: column;
+    perspective: none;
+    gap: 16px;
+  }
+  .block {
+    width: 100%;
+    height: 220px;
+    position: relative;
+  }
+  .card {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    margin-bottom: 12px;
+  }
+  .cardRight { background: #141414; }
+  .arrow { display: none; }
+  .dots { display: none; }
+  .scrollHint { display: none; }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 14px;
+  }
+  .gridCard {
+    animation-delay: calc(var(--gi) * 0.06s) !important;
+  }
+}

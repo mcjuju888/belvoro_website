@@ -19,7 +19,7 @@ const steps = [
   {
     num: '04',
     title: 'Optimize',
-    desc: 'We refine based on real call data and conversations — always improving over time.',
+    desc: 'We refine based on real call data and conversations, always improving over time.',
   },
 ]
 
