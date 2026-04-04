@@ -132,88 +132,111 @@ export default function FeatureScroll() {
 
   return (
     <section id="features" ref={sectionRef} className={styles.section}>
-      <div className={styles.label}>
-        <div className={styles.eyebrow}>Features</div>
-        <h2 className={styles.heading}>
-          Built to handle <i>everything</i>
-        </h2>
-      </div>
+      <div className={styles.desktopOnly}>
+        <div className={styles.label}>
+          <div className={styles.eyebrow}>Features</div>
+          <h2 className={styles.heading}>
+            Built to handle <i>everything</i>
+          </h2>
+        </div>
 
-      <div className={`${styles.stage} ${sprayed ? styles.stageSprayed : ''}`}>
-        {sprayed ? (
-          <div className={styles.grid}>
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className={styles.gridCard}
-                style={{ '--gi': i } as CSSProperties}
-              >
-                <div className={styles.cardNum}>{f.num}</div>
-                <span className={styles.cardTag}>{f.tag}</span>
-                <h3 className={styles.cardTitle}>{f.title}</h3>
-                <p className={styles.cardDesc}>{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <>
-            <div className={`${styles.block} ${phase === 0 ? styles.blockVisible : styles.blockHidden}`}>
-              <div className={styles.blockInner}>
-                <div className={styles.blockEyebrow}>What Belvoro does</div>
-                <div className={styles.blockTitle}>
-                  Your AI front desk,<br />
-                  <i>fully automated</i>
-                </div>
-                <div className={styles.blockHint}>↓ scroll to explore</div>
-              </div>
-            </div>
-
-            {phase === 1 && features.map((f, i) => {
-              const pos = getPosition(i)
-              if (pos === 'far-left' || pos === 'far-right') return null
-              return (
+        <div className={`${styles.stage} ${sprayed ? styles.stageSprayed : ''}`}>
+          {sprayed ? (
+            <div className={styles.grid}>
+              {features.map((f, i) => (
                 <div
                   key={i}
-                  className={`
-                    ${styles.card}
-                    ${pos === 'center' ? styles.cardCenter : ''}
-                    ${pos === 'left' ? styles.cardLeft : ''}
-                    ${pos === 'right' ? styles.cardRight : ''}
-                  `}
+                  className={styles.gridCard}
+                  style={{ '--gi': i } as CSSProperties}
                 >
                   <div className={styles.cardNum}>{f.num}</div>
                   <span className={styles.cardTag}>{f.tag}</span>
                   <h3 className={styles.cardTitle}>{f.title}</h3>
                   <p className={styles.cardDesc}>{f.desc}</p>
                 </div>
-              )
-            })}
-          </>
+              ))}
+            </div>
+          ) : (
+            <>
+              <div className={`${styles.block} ${phase === 0 ? styles.blockVisible : styles.blockHidden}`}>
+                <div className={styles.blockInner}>
+                  <div className={styles.blockEyebrow}>What Belvoro does</div>
+                  <div className={styles.blockTitle}>
+                    Your AI front desk,<br />
+                    <i>fully automated</i>
+                  </div>
+                  <div className={styles.blockHint}>↓ scroll to explore</div>
+                </div>
+              </div>
+
+              {phase === 1 && features.map((f, i) => {
+                const pos = getPosition(i)
+                if (pos === 'far-left' || pos === 'far-right') return null
+                return (
+                  <div
+                    key={i}
+                    className={`
+                    ${styles.card}
+                    ${pos === 'center' ? styles.cardCenter : ''}
+                    ${pos === 'left' ? styles.cardLeft : ''}
+                    ${pos === 'right' ? styles.cardRight : ''}
+                  `}
+                  >
+                    <div className={styles.cardNum}>{f.num}</div>
+                    <span className={styles.cardTag}>{f.tag}</span>
+                    <h3 className={styles.cardTitle}>{f.title}</h3>
+                    <p className={styles.cardDesc}>{f.desc}</p>
+                  </div>
+                )
+              })}
+            </>
+          )}
+        </div>
+
+        {phase === 1 && !sprayed && (
+          <div className={styles.dots}>
+            {features.map((_, i) => (
+              <div
+                key={i}
+                className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+              />
+            ))}
+          </div>
+        )}
+
+        {!sprayed && (
+          <div className={styles.scrollHint}>
+            {phase === 0 && <span>Scroll to explore ↓</span>}
+            {phase === 1 && active < features.length - 1 && (
+              <span>Scroll for next feature ↓</span>
+            )}
+            {phase === 1 && active === features.length - 1 && (
+              <span>Scroll to reveal all features ↓</span>
+            )}
+          </div>
         )}
       </div>
 
-      {phase === 1 && !sprayed && (
-        <div className={styles.dots}>
-          {features.map((_, i) => (
-            <div
-              key={i}
-              className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
-            />
+      <div className={styles.mobileOnly}>
+        <div className={styles.mobileHeader}>
+          <div className={styles.eyebrow}>Features</div>
+          <h2 className={styles.heading}>
+            Built to handle <i>everything</i>
+          </h2>
+        </div>
+        <div className={styles.mobileGrid}>
+          {features.map((f, i) => (
+            <div key={i} className={styles.mobileCard}>
+              <div className={styles.mobileCardTop}>
+                <span className={styles.cardTag}>{f.tag}</span>
+                <span className={styles.cardNum}>{f.num}</span>
+              </div>
+              <h3 className={styles.cardTitle}>{f.title}</h3>
+              <p className={styles.cardDesc}>{f.desc}</p>
+            </div>
           ))}
         </div>
-      )}
-
-      {!sprayed && (
-        <div className={styles.scrollHint}>
-          {phase === 0 && <span>Scroll to explore ↓</span>}
-          {phase === 1 && active < features.length - 1 && (
-            <span>Scroll for next feature ↓</span>
-          )}
-          {phase === 1 && active === features.length - 1 && (
-            <span>Scroll to reveal all features ↓</span>
-          )}
-        </div>
-      )}
+      </div>
     </section>
   )
 }
