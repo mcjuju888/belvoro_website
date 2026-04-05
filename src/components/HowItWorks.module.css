@@ -94,6 +94,28 @@
 
 @media (max-width: 768px) {
   .section { padding: 60px 24px; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 16px;
+    overflow: hidden;
+  }
   .heading { font-size: 34px; }
+
+  .step {
+    background: #F8FBF9;
+    border-radius: 0;
+  }
+
+  .step:hover {
+    background: #F8FBF9;
+    transform: none;
+  }
+
+  .step:first-child {
+    border-radius: 0;
+  }
+
+  .step:last-child {
+    border-radius: 0;
+  }
 }

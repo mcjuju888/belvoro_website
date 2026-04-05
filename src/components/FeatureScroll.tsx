@@ -55,10 +55,10 @@ const features = [
 ]
 
 export default function FeatureScroll() {
-  const [phase, setPhase] = useState(0)
+  const [phase] = useState(1)
   // active = index of the CENTER card
   const [active, setActive] = useState(0)
-  const [, setCompleted] = useState(false)
+  const [completed, setCompleted] = useState(false)
   const [sprayed, setSprayed] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
   const accumulated = useRef(0)
@@ -69,69 +69,109 @@ export default function FeatureScroll() {
     const handleWheel = (e: WheelEvent) => {
       const section = sectionRef.current
       if (!section) return
+
       const rect = section.getBoundingClientRect()
-      const inView = rect.top <= 100 && rect.bottom >= window.innerHeight * 0.4
-      if (!inView) return
+
+      // Section is "active" when it occupies most of the viewport
+      const sectionVisible = rect.top <= 80 && rect.bottom >= window.innerHeight - 80
+
+      // If sprayed, never lock
       if (sprayed) return
-      if (animating.current) { e.preventDefault(); return }
+
+      // If section not in sticky zone, don't intercept
+      if (!sectionVisible) return
+
+      if (animating.current) {
+        e.preventDefault()
+        e.stopPropagation()
+        return
+      }
 
       accumulated.current += e.deltaY
 
       if (Math.abs(accumulated.current) < THRESHOLD) {
-        if (phase === 1 && !sprayed) e.preventDefault()
+        e.preventDefault()
+        e.stopPropagation()
         return
       }
 
       const dir = accumulated.current > 0 ? 1 : -1
       accumulated.current = 0
 
-      // Phase 0 -> 1: split block into cards
-      if (phase === 0 && dir > 0) {
-        e.preventDefault()
-        animating.current = true
-        setPhase(1)
-        setTimeout(() => { animating.current = false }, 700)
+      // At first card scrolling back — let page scroll naturally
+      if (phase === 1 && dir < 0 && active === 0) {
         return
       }
 
-      // Phase 1 carousel
-      if (phase === 1) {
-        if (dir > 0) {
-          if (active === features.length - 1 && !sprayed) {
-            e.preventDefault()
-            animating.current = true
-            setSprayed(true)
-            setCompleted(true)
-            setTimeout(() => { animating.current = false }, 900)
-            return
-          }
-          if (active < features.length - 1) {
-            e.preventDefault()
-            animating.current = true
-            setActive(prev => prev + 1)
+      e.preventDefault()
+      e.stopPropagation()
+
+      // Phase 1 carousel forward
+      if (phase === 1 && dir > 0) {
+        if (active < features.length - 1) {
+          animating.current = true
+          setActive(prev => prev + 1)
+          if (active + 1 === features.length - 1) {
+            setTimeout(() => {
+              animating.current = false
+            }, 500)
+          } else {
             setTimeout(() => { animating.current = false }, 500)
           }
         } else {
-          if (active > 0) {
-            e.preventDefault()
-            animating.current = true
-            setActive(prev => prev - 1)
-            setTimeout(() => { animating.current = false }, 500)
-          } else if (active === 0) {
-            e.preventDefault()
-            animating.current = true
-            setPhase(0)
-            setCompleted(false)
-            setSprayed(false)
-            setTimeout(() => { animating.current = false }, 700)
-          }
+          // Last card — trigger spray and unlock
+          animating.current = true
+          setSprayed(true)
+          setCompleted(true)
+          setTimeout(() => { animating.current = false }, 900)
         }
+        return
+      }
+
+      // Phase 1 carousel backward
+      if (phase === 1 && dir < 0) {
+        if (active > 0) {
+          animating.current = true
+          setActive(prev => prev - 1)
+          setTimeout(() => { animating.current = false }, 500)
+        }
+        // at active === 0 scrolling back — do nothing, let user scroll up naturally
+        return
       }
     }
 
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [phase, active, sprayed])
+    // Use capture phase so we intercept before anything else
+    window.addEventListener('wheel', handleWheel, {
+      passive: false,
+      capture: true,
+    })
+
+    return () => window.removeEventListener('wheel', handleWheel, {
+      capture: true,
+    })
+  }, [phase, active, sprayed, completed])
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !sprayed) {
+          document.body.style.overscrollBehavior = 'none'
+        } else {
+          document.body.style.overscrollBehavior = 'auto'
+        }
+      },
+      { threshold: 0.6 },
+    )
+
+    observer.observe(section)
+    return () => {
+      observer.disconnect()
+      document.body.style.overscrollBehavior = 'auto'
+    }
+  }, [sprayed])
 
   const getPosition = (index: number) => {
     const diff = index - active
@@ -218,7 +258,6 @@ export default function FeatureScroll() {
 
         {!sprayed && (
           <div className={styles.scrollHint}>
-            {phase === 0 && <span>Scroll to explore ↓</span>}
             {phase === 1 && active < features.length - 1 && (
               <span>Scroll for next feature ↓</span>
             )}

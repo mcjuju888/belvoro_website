@@ -72,7 +72,7 @@
   gap: 16px;
 }
 
-.playBtn {
+.videoInner .playBtn {
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -85,7 +85,7 @@
   padding-left: 4px;
 }
 
-.playBtn:hover {
+.videoInner .playBtn:hover {
   background: #18858D;
   transform: scale(1.05);
 }
@@ -94,6 +94,137 @@
   font-size: 14px;
   color: #ccc;
   font-weight: 300;
+}
+
+.audioSection {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+  border-top: 1px solid #F0F0F0;
+}
+
+.audioLeft {
+  min-width: 0;
+}
+
+.audioLabel {
+  min-width: 0;
+}
+
+.audioEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #209FA8;
+  margin-bottom: 10px;
+}
+
+.audioTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: #1C2023;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.audioTitle i {
+  font-style: italic;
+  color: #209FA8;
+}
+
+.audioDesc {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.audioRight {
+  display: flex;
+  align-items: center;
+}
+
+/* PLAYER */
+.player {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #F8FDFC;
+  border: 1px solid #D8F0EE;
+  border-radius: 100px;
+  padding: 14px 20px;
+  width: 100%;
+}
+
+.player .playBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #209FA8;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.15s;
+  padding-left: 2px;
+}
+
+.player .playBtn:hover {
+  background: #18858D;
+  transform: scale(1.05);
+}
+
+.playerMiddle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progressBar {
+  height: 4px;
+  background: #D8F0EE;
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: #209FA8;
+  border-radius: 100px;
+  transition: width 0.1s linear;
+}
+
+.progressThumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #209FA8;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 400;
+  padding: 0 2px;
 }
 
 /* CARDS */
@@ -205,5 +336,10 @@
   .ctaBtns {
     flex-direction: column;
     align-items: center;
+  }
+  .audioSection {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 0;
   }
 }
