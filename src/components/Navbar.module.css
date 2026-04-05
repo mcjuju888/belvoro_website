@@ -104,18 +104,39 @@
 }
 
 @media (max-width: 768px) {
+  .nav {
+    padding: 0 16px;
+    height: 56px;
+    flex-wrap: nowrap;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
   .loginBtn {
-    padding: 7px 12px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .startBtn {
-    padding: 7px 12px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
-  .nav {
-    padding: 0 16px;
+  .logoImg {
+    height: 28px;
+    width: auto;
+    flex-shrink: 0;
   }
 
   .links {
