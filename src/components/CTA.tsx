@@ -9,7 +9,7 @@ export default function CTA() {
         Ready to put your front desk<br />
         <i>on autopilot?</i>
       </h2>
-      <p className={styles.sub}>Custom AI — built around your business, live in days.</p>
+      <p className={styles.sub}>Custom AI:  built around your business, live in days.</p>
       <div className={styles.btns}>
         <a href="/get-started" className={styles.btnDark}>Get Started Free</a>
         <a href="/watch-demo" className={styles.btnOutline}>Watch Demo →</a>

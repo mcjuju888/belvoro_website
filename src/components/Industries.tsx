@@ -2,22 +2,33 @@ import styles from './Industries.module.css'
 
 const industries = [
   {
-    icon: '🗓',
     title: 'Appointment-Based',
-    desc: 'Clinics, salons, auto shops, businesses where scheduling drives everything.',
-    tags: ['Booking & rescheduling', 'SMS reminders', 'No-show reduction'],
+    desc: 'For clinics, salons, and service businesses where scheduling drives operations.',
+    tags: [
+      'Booking & rescheduling',
+      'Automated SMS reminders',
+      'No-show reduction tools',
+      'Calendar syncing & availability tracking',
+    ],
   },
   {
-    icon: '🚗',
     title: 'Sales-Driven',
-    desc: 'Sales organizations that need to  capture, qualify, and convert every lead.',
-    tags: ['Lead capture & scoring', 'Customer data capture & profile building', 'Appointment setting'],
+    desc: 'Built for businesses that rely on capturing, qualifying, and converting every lead.',
+    tags: [
+      'Lead capture & scoring',
+      'Appointment scheduling',
+      'Customer profiles & database storage',
+    ],
   },
   {
-    icon: '🏢',
     title: 'High-Volume Multi-Dept.',
-    desc: 'Complex operations managing high call volumes and smart routing across departments.',
-    tags: ['Intent-based routing', 'Multi-dept flows', 'Real-time dashboard'],
+    desc: 'Designed for teams handling large call volumes across multiple departments.',
+    tags: [
+      'Intent-based call routing',
+      'Multi-department workflows',
+      'Real-time analytics dashboard',
+      'Internal notifications & handoffs',
+    ],
   },
 ]
 
@@ -25,32 +36,31 @@ export default function Industries() {
   return (
     <section id="industries" className={styles.section}>
       <div className="container">
-      <div className={styles.eyebrow}>Industries</div>
-      <h2 className={styles.heading}>
-        Built for businesses that<br />
-        <i>can't miss a call</i>
-      </h2>
-      <p className={styles.sub}>
-        Belvoro adapts to your operation — appointments, sales, or high-volume routing.
-      </p>
-      <div className={styles.grid}>
-        {industries.map((ind) => (
-          <div key={ind.title} className={styles.card}>
-            <div className={styles.cardHead}>
-              <div className={styles.icon}>{ind.icon}</div>
-            </div>
-            <div className={styles.cardBody}>
+        <div className={styles.eyebrow}>Industries we serve</div>
+        <h2 className={styles.heading}>
+          Built for businesses that<br />
+          <i>Rely on thier front desk</i>
+        </h2>
+        <p className={styles.sub}>
+          Belvoro adapts to your operation — appointments,
+          sales, or high-volume routing.
+        </p>
+        <div className={styles.grid}>
+          {industries.map((ind, i) => (
+            <div key={i} className={styles.card}>
               <h3 className={styles.cardTitle}>{ind.title}</h3>
               <p className={styles.cardDesc}>{ind.desc}</p>
               <ul className={styles.tags}>
                 {ind.tags.map((t) => (
-                  <li key={t} className={styles.tag}>{t}</li>
+                  <li key={t} className={styles.tag}>
+                    <span className={styles.check}>✓</span>
+                    {t}
+                  </li>
                 ))}
               </ul>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </section>
   )

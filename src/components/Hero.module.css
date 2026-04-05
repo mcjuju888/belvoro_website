@@ -1,5 +1,5 @@
 .hero {
-  padding: 96px 0 80px;
+  padding: 96px 0 60px;
   background: #fff;
   border-bottom: 1px solid #F0F0F0;
 }
@@ -50,7 +50,7 @@
   font-family: 'Fraunces', serif;
   font-size: 64px;
   line-height: 1.0;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -2px;
   font-weight: 300;
   margin-bottom: 24px;
@@ -92,7 +92,7 @@
 
 .btnGhost {
   background: #fff;
-  color: #0A0A0A;
+  color: #1C2023;
   border: 1px solid #E8E8E8;
   padding: 12px 24px;
   border-radius: 100px;

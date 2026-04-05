@@ -1,5 +1,5 @@
 .section {
-  background: #0A0A0A;
+  background: #1C2023;
   padding: 80px 48px;
   border-bottom: 1px solid #F0F0F0;
 }
@@ -21,7 +21,7 @@
 .quote {
   font-family: 'Fraunces', serif;
   font-size: 26px;
-  color: #0A0A0A;
+  color: #1C2023;
   line-height: 1.5;
   font-style: italic;
   font-weight: 300;
@@ -44,7 +44,7 @@
 .avatar {
   width: 42px;
   height: 42px;
-  background: #0A0A0A;
+  background: #1C2023;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@
 .name {
   font-size: 14px;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1C2023;
 }
 
 .role {
@@ -85,7 +85,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.15s ease;
-  color: #0A0A0A;
+  color: #1C2023;
 }
 
 .arrowBtn:hover {

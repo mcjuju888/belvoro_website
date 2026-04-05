@@ -57,7 +57,7 @@ const features = [
 export default function FeatureScroll() {
   const [phase, setPhase] = useState(0)
   // active = index of the CENTER card
-  const [active, setActive] = useState(1)
+  const [active, setActive] = useState(0)
   const [, setCompleted] = useState(false)
   const [sprayed, setSprayed] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -112,12 +112,12 @@ export default function FeatureScroll() {
             setTimeout(() => { animating.current = false }, 500)
           }
         } else {
-          if (active > 1) {
+          if (active > 0) {
             e.preventDefault()
             animating.current = true
             setActive(prev => prev - 1)
             setTimeout(() => { animating.current = false }, 500)
-          } else if (active === 1) {
+          } else if (active === 0) {
             e.preventDefault()
             animating.current = true
             setPhase(0)
@@ -167,15 +167,6 @@ export default function FeatureScroll() {
                   <p className={styles.cardDesc}>{f.desc}</p>
                 </div>
               ))}
-
-              <div className={styles.gridCardComingSoon} style={{ '--gi': 8 } as CSSProperties}>
-                <div className={styles.cardNum}>—</div>
-                <span className={styles.cardTag}>What's next</span>
-                <h3 className={styles.cardTitle}>More coming soon</h3>
-                <p className={styles.cardDesc}>
-                  We're always building. New features and integrations on the way.
-                </p>
-              </div>
             </div>
           ) : (
             <>

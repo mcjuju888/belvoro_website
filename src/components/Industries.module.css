@@ -16,7 +16,7 @@
 .heading {
   font-family: 'Fraunces', serif;
   font-size: 44px;
-  color: #0A0A0A;
+  color: #1C2023;
   font-weight: 300;
   letter-spacing: -1.2px;
   line-height: 1.08;
@@ -34,86 +34,92 @@
   max-width: 400px;
   line-height: 1.7;
   font-weight: 300;
-  margin-bottom: 40px;
+  margin-bottom: 52px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.card {
+  gap: 0;
   border: 1px solid #F0F0F0;
   border-radius: 20px;
   overflow: hidden;
-  transition: border-color 0.15s;
+}
+
+.card {
+  padding: 40px 36px;
+  background: #fff;
+  border-right: 1px solid #F0F0F0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: background 0.2s ease;
+}
+
+.card:last-child {
+  border-right: none;
 }
 
 .card:hover {
-  border-color: #D8F0EE;
-}
-
-.cardHead {
-  height: 72px;
-  display: flex;
-  align-items: center;
-  padding: 0 26px;
-  background: #F8F8F8;
-  border-bottom: 1px solid #F0F0F0;
-}
-
-.icon {
-  font-size: 28px;
-}
-
-.cardBody {
-  padding: 22px 26px;
+  background: #FAFCFC;
 }
 
 .cardTitle {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
-  color: #0A0A0A;
-  margin-bottom: 8px;
-  letter-spacing: -0.2px;
+  color: #1C2023;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
 }
 
 .cardDesc {
-  font-size: 13px;
-  color: #aaa;
-  line-height: 1.6;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.65;
   font-weight: 300;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #F0F0F0;
 }
 
 .tags {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 .tag {
-  font-size: 12px;
-  color: #209FA8;
+  font-size: 14px;
+  color: #1C2023;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
-.tag::before {
-  content: '';
-  display: block;
-  width: 4px;
-  height: 4px;
-  background: #209FA8;
-  border-radius: 50%;
+.check {
+  color: #209FA8;
+  font-size: 14px;
+  font-weight: 700;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
 @media (max-width: 768px) {
-  .section { padding: 60px 24px; }
-  .grid { grid-template-columns: 1fr; }
+  .section { padding: 56px 0; }
+  .grid {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+  .card {
+    border-right: none;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  .card:last-child {
+    border-bottom: none;
+  }
   .heading { font-size: 34px; }
 }

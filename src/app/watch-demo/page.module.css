@@ -33,7 +33,7 @@
   font-family: 'Fraunces', serif;
   font-size: 52px;
   font-weight: 300;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -1.5px;
   line-height: 1.05;
   margin-bottom: 16px;
@@ -125,7 +125,7 @@
 .cardTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1C2023;
   margin-bottom: 7px;
   letter-spacing: -0.2px;
 }
@@ -150,7 +150,7 @@
   font-family: 'Fraunces', serif;
   font-size: 24px;
   font-weight: 300;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -0.5px;
 }
 
@@ -175,7 +175,7 @@
 
 .btnOutline {
   background: #fff;
-  color: #0A0A0A;
+  color: #1C2023;
   border: 1px solid #E8E8E8;
   padding: 12px 24px;
   border-radius: 100px;

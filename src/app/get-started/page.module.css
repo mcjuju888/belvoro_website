@@ -35,7 +35,7 @@
   font-family: 'Fraunces', serif;
   font-size: 40px;
   font-weight: 300;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -1px;
   line-height: 1.08;
   margin-bottom: 12px;
@@ -75,14 +75,14 @@
 .label {
   font-size: 13px;
   font-weight: 600;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -0.1px;
 }
 
 .input {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
-  color: #0A0A0A;
+  color: #1C2023;
   background: #fff;
   border: 1px solid #E8E8E8;
   border-radius: 10px;
@@ -104,7 +104,7 @@
 .textarea {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
-  color: #0A0A0A;
+  color: #1C2023;
   background: #fff;
   border: 1px solid #E8E8E8;
   border-radius: 10px;
@@ -160,7 +160,7 @@
   font-family: 'Fraunces', serif;
   font-size: 32px;
   font-weight: 300;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -0.8px;
   line-height: 1.1;
   margin-bottom: 36px;
@@ -205,7 +205,7 @@
 .stepTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1C2023;
   margin-bottom: 5px;
   letter-spacing: -0.2px;
 }
@@ -227,7 +227,7 @@
 .clientBoxTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1C2023;
   margin-bottom: 5px;
 }
 

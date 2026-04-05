@@ -1,11 +1,20 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>
-        Belvoro<em>.</em>ai
-      </div>
+      <Link href="/" className={styles.logoLink}>
+        <Image
+          src="/logo.jpeg"
+          alt="Belvoro AI"
+          width={160}
+          height={44}
+          className={styles.logoImg}
+          priority
+        />
+      </Link>
       <div className={styles.links}>
         <a href="/#features">Features</a>
         <a href="/#how-it-works">How it works</a>

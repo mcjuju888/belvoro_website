@@ -16,7 +16,7 @@
 .heading {
   font-family: 'Fraunces', serif;
   font-size: 44px;
-  color: #0A0A0A;
+  color: #1C2023;
   font-weight: 300;
   letter-spacing: -1.2px;
   line-height: 1.08;
@@ -80,7 +80,7 @@
 .stepTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1C2023;
   margin-bottom: 8px;
   letter-spacing: -0.2px;
 }

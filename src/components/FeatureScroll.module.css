@@ -1,5 +1,5 @@
 .section {
-  background: #0A0A0A;
+  background: #1C2023;
   padding: 80px 0 80px;
   min-height: 100vh;
   display: flex;
@@ -106,7 +106,7 @@
   font-family: 'Fraunces', serif;
   font-size: 42px;
   font-weight: 300;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -1px;
   line-height: 1.2;
 }
@@ -159,19 +159,11 @@
 
 /* RIGHT — slides to right, rotates slightly, dims */
 .cardRight {
-  background: #141414;
-  border: 1px solid #222;
+  background: #F8F8F8;
+  border: 1px solid #E8E8E8;
   transform: translateX(310px) rotateY(-22deg) scale(0.9);
   opacity: 0.55;
   z-index: 5;
-}
-
-.cardRight .cardNum { color: #444; }
-.cardRight .cardTitle { color: #fff; }
-.cardRight .cardDesc { color: #666; }
-.cardRight .cardTag {
-  background: #1A1A1A;
-  color: #209FA8;
 }
 
 .cardNum {
@@ -196,7 +188,7 @@
 .cardTitle {
   font-size: 22px;
   font-weight: 700;
-  color: #0A0A0A;
+  color: #1C2023;
   letter-spacing: -0.4px;
   line-height: 1.25;
   margin-top: 8px;
@@ -224,7 +216,7 @@
   justify-content: center;
   z-index: 30;
   transition: all 0.2s ease;
-  color: #0A0A0A;
+  color: #1C2023;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   top: 50%;
   transform: translateY(-50%);
@@ -280,10 +272,12 @@
 /* GRID — final state after spray */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 280px);
-  grid-template-rows: repeat(3, auto);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
   padding: 0 40px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .gridCard {
@@ -295,9 +289,25 @@
   flex-direction: column;
   gap: 12px;
   opacity: 0;
-  transform: scale(0.6) translateY(60px);
   animation: sprayIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   animation-delay: calc(var(--gi) * 0.08s);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  cursor: default;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.gridCard:hover {
+  transform: translateY(-18px) scale(1.06) perspective(800px) rotateX(3deg);
+  box-shadow:
+    0 0 0 1px rgba(32, 159, 168, 0.5),
+    0 8px 16px rgba(32, 159, 168, 0.3),
+    0 20px 40px rgba(32, 159, 168, 0.35),
+    0 40px 80px rgba(32, 159, 168, 0.25),
+    0 60px 120px rgba(32, 159, 168, 0.15);
+  border-color: rgba(32, 159, 168, 0.6);
 }
 
 @keyframes sprayIn {
@@ -314,103 +324,66 @@
   }
 }
 
-.gridCard:nth-child(1) {
-  animation-name: sprayInLeft;
-}
-
-.gridCard:nth-child(3) {
-  animation-name: sprayInRight;
-}
-
-.gridCard:nth-child(4) {
-  animation-name: sprayInLeft;
-  animation-delay: 0.12s;
-}
-
-.gridCard:nth-child(5) {
-  animation-name: sprayInDown;
-  animation-delay: 0.18s;
-}
-
-.gridCard:nth-child(6) {
-  animation-name: sprayInRight;
-  animation-delay: 0.24s;
-}
-
-@keyframes sprayInLeft {
-  0%   { opacity: 0; transform: translateX(-120px) scale(0.7) rotate(-4deg); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
-}
-
-@keyframes sprayInRight {
-  0%   { opacity: 0; transform: translateX(120px) scale(0.7) rotate(4deg); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
-}
-
-@keyframes sprayInUp {
-  0%   { opacity: 0; transform: translateY(-100px) scale(0.7); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes sprayInDown {
-  0%   { opacity: 0; transform: translateY(100px) scale(0.7); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
+/* Override all nth-child color overrides to be white */
 .gridCard:nth-child(2) {
-  animation-name: sprayInUp;
-  background: #209FA8;
-  border-color: #209FA8;
+  background: #fff;
+  border-color: #F0F0F0;
 }
-
-.gridCard:nth-child(2) .cardNum { color: rgba(255,255,255,0.5); }
-.gridCard:nth-child(2) .cardTitle { color: #fff; }
-.gridCard:nth-child(2) .cardDesc { color: rgba(255,255,255,0.7); }
+.gridCard:nth-child(2) .cardNum { color: #ddd; }
+.gridCard:nth-child(2) .cardTitle { color: #1C2023; }
+.gridCard:nth-child(2) .cardDesc { color: #888; }
 .gridCard:nth-child(2) .cardTag {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-
-.gridCard:nth-child(5) {
-  background: #111;
-  border-color: #222;
-}
-
-.gridCard:nth-child(5) .cardNum { color: #444; }
-.gridCard:nth-child(5) .cardTitle { color: #fff; }
-.gridCard:nth-child(5) .cardDesc { color: #666; }
-.gridCard:nth-child(5) .cardTag {
-  background: #1A1A1A;
+  background: #EBF9FA;
   color: #209FA8;
 }
 
-.gridCardComingSoon {
-  background: transparent;
-  border: 2px dashed #222;
-  border-radius: 22px;
-  padding: 32px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  opacity: 0;
-  animation: sprayIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 0.32s;
+.gridCard:nth-child(5) {
+  background: #fff;
+  border-color: #F0F0F0;
+}
+.gridCard:nth-child(5) .cardNum { color: #ddd; }
+.gridCard:nth-child(5) .cardTitle { color: #1C2023; }
+.gridCard:nth-child(5) .cardDesc { color: #888; }
+.gridCard:nth-child(5) .cardTag {
+  background: #EBF9FA;
+  color: #209FA8;
 }
 
-.gridCardComingSoon .cardNum { color: #333; }
-.gridCardComingSoon .cardTag {
-  background: #1A1A1A;
-  color: #444;
+/* Make sure cardTitle and cardDesc are consistent
+   across all cards */
+.gridCard .cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C2023;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
 }
-.gridCardComingSoon .cardTitle {
-  color: #555;
-  font-size: 20px;
+
+.gridCard .cardDesc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.65;
+  font-weight: 300;
 }
-.gridCardComingSoon .cardDesc { color: #333; }
+
+.gridCard .cardNum {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ddd;
+  letter-spacing: 0.08em;
+}
+
+.gridCard .cardTag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  background: #EBF9FA;
+  color: #209FA8;
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
 
 .desktopOnly {
   display: contents;
@@ -428,6 +401,18 @@
 
   .desktopOnly {
     display: none;
+  }
+
+  /* Mobile grid — 2 columns */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 24px;
+    gap: 12px;
+  }
+  .gridCard:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #F0F0F0;
   }
 
   .mobileOnly {
@@ -497,7 +482,7 @@
     background: #fff;
     border: 1px solid #E8E8E8;
   }
-  .mobileCard:nth-child(2) .cardTitle { color: #0A0A0A; }
+  .mobileCard:nth-child(2) .cardTitle { color: #1C2023; }
   .mobileCard:nth-child(2) .cardDesc { color: #888; }
   .mobileCard:nth-child(2) .cardNum { color: #ddd; }
   .mobileCard:nth-child(2) .cardTag {
@@ -509,7 +494,7 @@
     background: #fff;
     border: 1px solid #E8E8E8;
   }
-  .mobileCard:nth-child(5) .cardTitle { color: #0A0A0A; }
+  .mobileCard:nth-child(5) .cardTitle { color: #1C2023; }
   .mobileCard:nth-child(5) .cardDesc { color: #888; }
   .mobileCard:nth-child(5) .cardNum { color: #ddd; }
   .mobileCard:nth-child(5) .cardTag {
