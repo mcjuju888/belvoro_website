@@ -120,8 +120,7 @@ export default function GetStarted() {
               </div>
               <div className={styles.step}>
                 <div className={styles.stepNum}>4</div>
-                <div className={styles.stepContent}>
-                  <div className={styles.stepTitle}>Go live</div>
+                <div className={styles.stepTitle}>Go live</div>
                   <div className={styles.stepDesc}>
                     Once approved, we connect everything and make it live.
                   </div>
