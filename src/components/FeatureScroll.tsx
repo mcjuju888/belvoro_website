@@ -19,7 +19,7 @@ const features = [
   {
     num: '03',
     title: 'Appointment Booking',
-    desc: 'Books, reschedules, and cancels based on your live availability rules. No back-and-forth, no double bookings.',
+    desc: 'Books, reschedules, and cancels appointments seamlessly through phone and online in one unified system, synced with your live availability. No back-and-forth, no double bookings.',
     tag: 'Live scheduling',
   },
   {

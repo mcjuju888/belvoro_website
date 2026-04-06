@@ -114,16 +114,16 @@ export default function WatchDemo() {
             </p>
           </div>
 
-          {/* Video placeholder */}
           <div className={styles.videoWrap}>
-            <div className={styles.videoInner}>
-              <div className={styles.playBtn}>
-                <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-                  <polygon points="6,3 20,12 6,21" />
-                </svg>
-              </div>
-              <p className={styles.videoLabel}>Demo video coming soon</p>
-            </div>
+            <video
+              className={styles.video}
+              controls
+              playsInline
+              poster=""
+            >
+              <source src="/belvoro-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
 
           <div className={styles.audioSection}>

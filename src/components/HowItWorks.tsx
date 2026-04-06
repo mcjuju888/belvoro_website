@@ -9,8 +9,7 @@ const steps = [
   {
     num: '02',
     title: 'Build',
-    desc: "We work alongside you to design and train your AI front desk around your real customer conversations and goals.\
-     Fully customized to your business. No payment until you're satisfied.",
+    desc: 'We design and train your AI agent around your real customer conversations and goals.',
   },
   {
     num: '03',

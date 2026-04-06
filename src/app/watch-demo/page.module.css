@@ -62,38 +62,12 @@
   position: relative;
 }
 
-.videoInner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.videoInner .playBtn {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #209FA8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
-  padding-left: 4px;
-}
-
-.videoInner .playBtn:hover {
-  background: #18858D;
-  transform: scale(1.05);
-}
-
-.videoLabel {
-  font-size: 14px;
-  color: #ccc;
-  font-weight: 300;
+.video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .audioSection {

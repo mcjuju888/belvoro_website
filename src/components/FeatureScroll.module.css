@@ -58,7 +58,7 @@
   perspective: none;
 }
 
-/* CARDS — all use absolute + transition for smooth sliding */
+  /* CARDS — all use absolute + transition for smooth sliding */
 .card {
   position: absolute;
   width: 280px;
