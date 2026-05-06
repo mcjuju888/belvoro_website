@@ -59,6 +59,7 @@ function AudioPlayer() {
       <audio
         ref={audioRef}
         src="/demo-call.mp4"
+        preload="metadata"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
