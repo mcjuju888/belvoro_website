@@ -1,8 +1,54 @@
+'use client'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
 
 export default function GetStarted() {
+  const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const [formData, setFormData] = useState({
+    fullName: '',
+    businessName: '',
+    email: '',
+    phone: '',
+    industry: '',
+    callVolume: '',
+    message: '',
+  })
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -11,77 +57,136 @@ export default function GetStarted() {
 
           {/* LEFT — Form */}
           <div className={styles.formCard}>
-            <div className={styles.eyebrow}>Get Started</div>
-            <h1 className={styles.heading}>
-              Let's build your<br />
-              <i>AI front desk</i>
-            </h1>
-            <p className={styles.sub}>
-              Tell us about your business and we'll be in touch within 24 hours.
-            </p>
-
-            <form className={styles.form}>
-              <div className={styles.row2}>
-                <div className={styles.field}>
-                  <label className={styles.label}>Full Name</label>
-                  <input className={styles.input} type="text" placeholder="John Smith" />
-                </div>
-                <div className={styles.field}>
-                  <label className={styles.label}>Business Name</label>
-                  <input className={styles.input} type="text" placeholder="Acme Auto Group" />
-                </div>
+            {submitted ? (
+              <div className={styles.successState}>
+                <div className={styles.successIcon}>✓</div>
+                <h2 className={styles.successTitle}>Message sent!</h2>
+                <p className={styles.successDesc}>
+                  We&apos;ll be in touch within 24 hours. Keep an eye
+                  on your inbox.
+                </p>
               </div>
+            ) : (
+              <>
+                <div className={styles.eyebrow}>Get Started</div>
+                <h1 className={styles.heading}>
+                  Let&apos;s build your<br />
+                  <i>AI front desk</i>
+                </h1>
+                <p className={styles.sub}>
+                  Tell us about your business and we&apos;ll be in touch within 24 hours.
+                </p>
 
-              <div className={styles.row2}>
-                <div className={styles.field}>
-                  <label className={styles.label}>Email Address</label>
-                  <input className={styles.input} type="email" placeholder="john@acmeauto.com" />
-                </div>
-                <div className={styles.field}>
-                  <label className={styles.label}>Phone Number</label>
-                  <input className={styles.input} type="tel" placeholder="+1 (416) 555-0100" />
-                </div>
-              </div>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <div className={styles.row2}>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Full Name</label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        name="fullName"
+                        placeholder="John Smith"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Business Name</label>
+                      <input
+                        className={styles.input}
+                        type="text"
+                        name="businessName"
+                        placeholder="Acme Auto Group"
+                        value={formData.businessName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-              <div className={styles.row2}>
-                <div className={styles.field}>
-                  <label className={styles.label}>Industry</label>
-                  <select className={styles.input}>
-                    <option value="">Select your industry</option>
-                    <option>Car Dealership</option>
-                    <option>Medical / Clinic</option>
-                    <option>Salon &amp; Spa</option>
-                    <option>Legal</option>
-                    <option>Real Estate</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className={styles.field}>
-                  <label className={styles.label}>Monthly Call Volume</label>
-                  <select className={styles.input}>
-                    <option value="">Select call volume</option>
-                    <option>Under 100</option>
-                    <option>100 – 500</option>
-                    <option>500 – 1,000</option>
-                    <option>1,000+</option>
-                  </select>
-                </div>
-              </div>
+                  <div className={styles.row2}>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Email Address</label>
+                      <input
+                        className={styles.input}
+                        type="email"
+                        name="email"
+                        placeholder="john@acmeauto.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Phone Number</label>
+                      <input
+                        className={styles.input}
+                        type="tel"
+                        name="phone"
+                        placeholder="+1 (416) 555-0100"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-              <div className={styles.field}>
-                <label className={styles.label}>Tell us about your business</label>
-                <textarea
-                  className={styles.textarea}
-                  rows={4}
-                  placeholder="Describe your business, your current call handling process, and what you're hoping to improve..."
-                />
-              </div>
+                  <div className={styles.row2}>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Industry</label>
+                      <select
+                        className={styles.input}
+                        name="industry"
+                        value={formData.industry}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select your industry</option>
+                        <option value="Car Dealership">Car Dealership</option>
+                        <option value="Medical / Clinic">Medical / Clinic</option>
+                        <option value="Salon & Spa">Salon &amp; Spa</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Monthly Call Volume</label>
+                      <select
+                        className={styles.input}
+                        name="callVolume"
+                        value={formData.callVolume}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select call volume</option>
+                        <option value="Under 100">Under 100</option>
+                        <option value="100 – 500">100 – 500</option>
+                        <option value="500 – 1,000">500 – 1,000</option>
+                        <option value="1,000+">1,000+</option>
+                      </select>
+                    </div>
+                  </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                Send Message →
-              </button>
-              <p className={styles.submitNote}>We'll respond within 24 hours.</p>
-            </form>
+                  <div className={styles.field}>
+                    <label className={styles.label}>Tell us about your business</label>
+                    <textarea
+                      className={styles.textarea}
+                      name="message"
+                      rows={4}
+                      placeholder="Describe your business, your current call handling process, and what you're hoping to improve..."
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    disabled={loading}
+                  >
+                    {loading ? 'Sending...' : 'Send Message →'}
+                  </button>
+                  {error && <p className={styles.errorMsg}>{error}</p>}
+                  <p className={styles.submitNote}>We&apos;ll respond within 24 hours.</p>
+                </form>
+              </>
+            )}
           </div>
 
           {/* RIGHT — Info panel */}
@@ -96,7 +201,7 @@ export default function GetStarted() {
                 <div className={styles.stepContent}>
                   <div className={styles.stepTitle}>We review your submission</div>
                   <div className={styles.stepDesc}>
-                    We'll look over your business details within 24 hours.
+                    We&apos;ll look over your business details within 24 hours.
                   </div>
                 </div>
               </div>
@@ -114,7 +219,7 @@ export default function GetStarted() {
                 <div className={styles.stepContent}>
                   <div className={styles.stepTitle}>We build your free demo</div>
                   <div className={styles.stepDesc}>
-                  We create a working AI bot and an automated front desk tailored to your business. No payment until you're fully satisfied with the setup.
+                    We create a working AI bot and an automated front desk tailored to your business. No payment until you&apos;re fully satisfied with the setup.
                   </div>
                 </div>
               </div>
@@ -128,7 +233,7 @@ export default function GetStarted() {
                 </div>
               </div>
             </div>
-            
+
 
 
             <div className={styles.clientBox}>

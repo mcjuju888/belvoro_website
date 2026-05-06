@@ -58,8 +58,9 @@ function AudioPlayer() {
     <div className={styles.player}>
       <audio
         ref={audioRef}
-        src="/demo-call.mp4"
+        src="https://alvhh0k661czyjmu.public.blob.vercel-storage.com/demo-call.mp4"
         preload="metadata"
+        crossOrigin="anonymous"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
