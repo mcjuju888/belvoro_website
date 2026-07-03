@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
+  other: {
+    'facebook-domain-verification': 'i9wtojplh1stieqe9xxvpkhsl45x1b',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
