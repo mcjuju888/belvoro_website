@@ -1,5 +1,5 @@
 'use client'
-import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
@@ -8,6 +8,8 @@ export default function GetStarted() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
+  // Honeypot — humans never see or fill this
+  const [website, setWebsite] = useState('')
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -18,6 +20,21 @@ export default function GetStarted() {
     callVolume: '',
     message: '',
   })
+
+  // Arriving from the revenue calculator? Carry their numbers into the message
+  // so the first conversation starts from their own math.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('calc') !== '1') return
+    const inquiries = params.get('inquiries')
+    const missed = params.get('missed')
+    const recovered = params.get('recovered')
+    if (!recovered) return
+    setFormData(prev => prev.message ? prev : ({
+      ...prev,
+      message: `I used the revenue calculator: ~${inquiries} inquiries/month with ${missed}% missed — it estimated $${Number(recovered).toLocaleString()}/month recoverable. I'd like to see what that looks like for my business.`,
+    }))
+  }, [])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -34,13 +51,14 @@ export default function GetStarted() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, website }),
       })
 
       if (res.ok) {
         setSubmitted(true)
       } else {
-        setError('Something went wrong. Please try again.')
+        const data = await res.json().catch(() => null)
+        setError(data?.error || 'Something went wrong. Please try again.')
       }
     } catch {
       setError('Something went wrong. Please try again.')
@@ -78,6 +96,17 @@ export default function GetStarted() {
                 </p>
 
                 <form className={styles.form} onSubmit={handleSubmit}>
+                  {/* Honeypot — hidden from humans, bots fill it and get silently dropped */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    autoComplete="off"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    style={{ position: 'absolute', left: '-9999px', height: 0, width: 0, opacity: 0 }}
+                  />
                   <div className={styles.row2}>
                     <div className={styles.field}>
                       <label className={styles.label}>Full Name</label>
@@ -88,6 +117,7 @@ export default function GetStarted() {
                         placeholder="John Smith"
                         value={formData.fullName}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className={styles.field}>
@@ -113,6 +143,7 @@ export default function GetStarted() {
                         placeholder="john@acmeauto.com"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className={styles.field}>
@@ -139,10 +170,12 @@ export default function GetStarted() {
                       >
                         <option value="">Select your industry</option>
                         <option value="Car Dealership">Car Dealership</option>
+                        <option value="Dental">Dental</option>
                         <option value="Medical / Clinic">Medical / Clinic</option>
                         <option value="Salon & Spa">Salon &amp; Spa</option>
                         <option value="Legal">Legal</option>
                         <option value="Real Estate">Real Estate</option>
+                        <option value="Trades & Home Services">Trades &amp; Home Services</option>
                         <option value="Other">Other</option>
                       </select>
                     </div>

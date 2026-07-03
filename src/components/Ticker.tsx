@@ -2,15 +2,16 @@ import styles from './Ticker.module.css'
 
 const items = [
   '24/7 Call Answering',
-  'Lead Qualification',
-  'Appointment Booking',
-  'SMS Follow-Ups & Reminders',
-  'Smart Call Routing',
-  'Custom Dashboard',
-  'Email Automation',
-  'Voicemail Detection',
-  'Lead Pipeline Tracking',
-  'Google Review Boosters',
+  'SMS · Email · Instagram · Facebook · Web Chat',
+  'Live Appointment Booking',
+  'Multi-Touch Follow-Up Sequences',
+  'Lead Scoring & Hot-Lead Alerts',
+  'Human Handoff With Full Context',
+  'Automatic Appointment Reminders',
+  'Google Review Generation',
+  'Dormant Lead Reactivation',
+  'Revenue Attribution Dashboard',
+  'Weekly Owner Reports',
 ]
 
 export default function Ticker() {

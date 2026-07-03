@@ -1,6 +1,9 @@
 'use client'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Testimonial.module.css'
+
+const EASE = [0.16, 1, 0.3, 1] as const
 
 const testimonials = [
   {
@@ -19,7 +22,7 @@ const testimonials = [
     quote: "The setup was shockingly fast. They built it around our exact workflow and it was live within days. Our booking rate is up significantly.",
     name: "Owner",
     company: "Apex Training Centre",
-    initials:"ATC",
+    initials: "ATC",
   },
   {
     quote: "Our front desk used to get overwhelmed during peak hours. Now every call gets answered professionally and appointments get booked automatically.",
@@ -29,12 +32,18 @@ const testimonials = [
   },
 ]
 
+const variants = {
+  enter: (dir: number) => ({ opacity: 0, x: dir * 48 }),
+  center: { opacity: 1, x: 0 },
+  exit: (dir: number) => ({ opacity: 0, x: dir * -48 }),
+}
+
 export default function Testimonial() {
   const [active, setActive] = useState(0)
-  const [direction, setDirection] = useState<'left' | 'right'>('right')
+  const [direction, setDirection] = useState<1 | -1>(1)
 
   const go = (index: number) => {
-    setDirection(index > active ? 'right' : 'left')
+    setDirection(index > active ? 1 : -1)
     setActive(index)
   }
 
@@ -47,20 +56,38 @@ export default function Testimonial() {
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <p className={styles.quote} key={active}>
-            "{t.quote}"
-          </p>
-          <div className={styles.attr}>
-            <div className={styles.avatar}>{t.initials}</div>
-            <div>
-              <div className={styles.name}>{t.name}</div>
-              <div className={styles.role}>{t.company}</div>
-            </div>
-          </div>
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={active}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: EASE }}
+            >
+              <p className={styles.quote}>"{t.quote}"</p>
+              <div className={styles.attr}>
+                <div className={styles.avatar}>{t.initials}</div>
+                <div>
+                  <div className={styles.name}>{t.name}</div>
+                  <div className={styles.role}>{t.company}</div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         <div className={styles.controls}>
-          <button className={styles.arrowBtn} onClick={prev}>←</button>
+          <motion.button
+            className={styles.arrowBtn}
+            onClick={prev}
+            whileHover={{ scale: 1.1, backgroundColor: '#209FA8', borderColor: '#209FA8', color: '#fff' }}
+            whileTap={{ scale: 0.93 }}
+            transition={{ duration: 0.15 }}
+          >
+            ←
+          </motion.button>
           <div className={styles.dots}>
             {testimonials.map((_, i) => (
               <button
@@ -70,7 +97,15 @@ export default function Testimonial() {
               />
             ))}
           </div>
-          <button className={styles.arrowBtn} onClick={next}>→</button>
+          <motion.button
+            className={styles.arrowBtn}
+            onClick={next}
+            whileHover={{ scale: 1.1, backgroundColor: '#209FA8', borderColor: '#209FA8', color: '#fff' }}
+            whileTap={{ scale: 0.93 }}
+            transition={{ duration: 0.15 }}
+          >
+            →
+          </motion.button>
         </div>
       </div>
     </section>

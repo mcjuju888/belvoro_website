@@ -9,6 +9,15 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.navScrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: rgba(240, 240, 240, 0.6);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.06);
 }
 
 .logoLink {

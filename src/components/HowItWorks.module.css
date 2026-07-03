@@ -50,13 +50,12 @@
 .step {
   background: #F8FBF9;
   padding: 32px 28px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease;
   cursor: default;
 }
 
 .step:hover {
   background: #EBF9FA;
-  transform: translateY(-3px);
 }
 
 .step:first-child { border-radius: 20px 0 0 20px; }
@@ -108,7 +107,6 @@
 
   .step:hover {
     background: #F8FBF9;
-    transform: none;
   }
 
   .step:first-child {

@@ -53,11 +53,7 @@
   border-radius: 100px;
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.15s;
-}
-
-.btnDark:hover {
-  background: #209FA8;
+  display: inline-block;
 }
 
 .btnOutline {
@@ -68,11 +64,7 @@
   border-radius: 100px;
   font-size: 14px;
   font-weight: 400;
-  transition: border-color 0.15s;
-}
-
-.btnOutline:hover {
-  border-color: #bbb;
+  display: inline-block;
 }
 
 @media (max-width: 768px) {

@@ -1,53 +1,89 @@
+'use client'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import styles from './Industries.module.css'
+
+const EASE = [0.16, 1, 0.3, 1] as const
 
 const industries = [
   {
-    title: 'Appointment-Based',
-    desc: 'For clinics, salons, and service businesses where scheduling drives operations.',
+    title: 'Auto Dealerships',
+    desc: 'An AI BDC that works every lead like your best rep on their best day — around the clock.',
     tags: [
-      'Booking & rescheduling',
-      'Automated SMS reminders',
-      'No-show reduction tools',
-      'Calendar syncing & availability tracking',
+      'Live inventory answers — never invents a car or a price',
+      'Test drives booked against real availability',
+      'Trade-in & financing intake, handed to F&I',
+      'After-hours leads captured while you’re closed',
     ],
   },
   {
-    title: 'Sales-Driven',
-    desc: 'Built for businesses that rely on capturing, qualifying, and converting every lead.',
+    title: 'Dental & Clinics',
+    desc: 'Same platform, different language — patients, visits, and recalls instead of leads and test drives.',
     tags: [
-      'Lead capture & scoring',
-      'Appointment scheduling',
-      'Customer profiles & database storage',
+      'Cleanings & consults booked with reminders',
+      'No-show defense: 24h and 2h confirmations',
+      'Recall reactivation for overdue patients',
+      'Emergency requests flagged to staff instantly',
     ],
   },
   {
-    title: 'High-Volume Multi-Dept.',
-    desc: 'Designed for teams handling large call volumes across multiple departments.',
+    title: 'Any Appointment Business',
+    desc: 'Salons, physio, trades, training centres — if bookings drive revenue, Belvoro fits in days.',
     tags: [
-      'Intent-based call routing',
-      'Multi-department workflows',
-      'Real-time analytics dashboard',
-      'Internal notifications & handoffs',
+      'Your services, hours, and vocabulary — not a template',
+      'Lead scoring so hot inquiries get called first',
+      'Human handoff with the full conversation attached',
+      'Weekly report: leads, bookings, revenue recovered',
     ],
   },
 ]
 
 export default function Industries() {
+  const gridRef = useRef(null)
+  const inView = useInView(gridRef, { once: true, margin: '-80px' })
+
   return (
     <section id="industries" className={styles.section}>
       <div className="container">
-        <div className={styles.eyebrow}>Industries we serve</div>
-        <h2 className={styles.heading}>
+        <motion.div
+          className={styles.eyebrow}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: EASE }}
+        >
+          Industries we serve
+        </motion.div>
+        <motion.h2
+          className={styles.heading}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+        >
           Built for businesses that<br />
-          <i>Rely on thier front desk</i>
-        </h2>
-        <p className={styles.sub}>
+          <i>Rely on their front desk</i>
+        </motion.h2>
+        <motion.p
+          className={styles.sub}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.18, ease: EASE }}
+        >
           Belvoro adapts to your operation — appointments,
           sales, or high-volume routing.
-        </p>
-        <div className={styles.grid}>
+        </motion.p>
+
+        <div className={styles.grid} ref={gridRef}>
           {industries.map((ind, i) => (
-            <div key={i} className={styles.card}>
+            <motion.div
+              key={i}
+              className={styles.card}
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 + i * 0.12, ease: EASE }}
+            >
               <h3 className={styles.cardTitle}>{ind.title}</h3>
               <p className={styles.cardDesc}>{ind.desc}</p>
               <ul className={styles.tags}>
@@ -58,7 +94,7 @@ export default function Industries() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

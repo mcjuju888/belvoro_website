@@ -4,6 +4,7 @@ import Ticker from '@/components/Ticker'
 import StatsBar from '@/components/StatsBar'
 import FeatureScroll from '@/components/FeatureScroll'
 import HowItWorks from '@/components/HowItWorks'
+import RevenueCalculator from '@/components/RevenueCalculator'
 import Testimonial from '@/components/Testimonial'
 import Industries from '@/components/Industries'
 import CTA from '@/components/CTA'
@@ -17,6 +18,7 @@ export default function Home() {
       <Ticker />
       <StatsBar />
       <FeatureScroll />
+      <RevenueCalculator />
       <HowItWorks />
       <Testimonial />
       <Industries />

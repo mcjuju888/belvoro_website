@@ -1,55 +1,55 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import type { CSSProperties } from 'react'
+import { motion } from 'framer-motion'
 import styles from './FeatureScroll.module.css'
 
 const features = [
   {
     num: '01',
-    title: '24/7 Call Answering',
-    desc: 'Never miss a lead. Your AI answers every call instantly — day, night, or weekend. No voicemail, no hold music, no lost revenue.',
-    tag: 'Always on',
+    title: 'Every Channel, One Brain',
+    desc: 'Calls, texts, emails, Instagram DMs, Facebook Messenger, and your website chat — all answered instantly by one AI. Someone who DMs, then texts, then calls is recognized as the same person with full history.',
+    tag: '6 channels',
   },
   {
     num: '02',
-    title: 'Lead Qualification',
-    desc: 'Asks the right questions and captures structured data from every caller automatically — synced straight to your dashboard.',
-    tag: 'Structured data',
-  },
-  {
-    num: '03',
-    title: 'Appointment Booking',
-    desc: 'Books, reschedules, and cancels appointments seamlessly through phone and online in one unified system, synced with your live availability. No back-and-forth, no double bookings.',
+    title: 'Real Appointment Booking',
+    desc: 'Not "someone will call you back." The AI checks your live availability, books against your real calendar with double-booking prevention, and sends reminders at 24h and 2h so people actually show up.',
     tag: 'Live scheduling',
   },
   {
+    num: '03',
+    title: 'No Lead Ever Goes Cold',
+    desc: 'When a lead stops replying, the AI follows up — at 4 hours, next day, and day 3 — each message written fresh from the actual conversation. Dormant contacts get re-engaged automatically, months later.',
+    tag: 'Auto follow-up',
+  },
+  {
     num: '04',
-    title: 'Smart Call Routing',
-    desc: 'Detects caller intent and transfers to the right person or department instantly — no dead ends, no frustrated customers.',
-    tag: 'Intent detection',
+    title: 'Your Team Calls the Hot Ones First',
+    desc: 'Every lead is scored on real buying signals — timeline, budget, the exact car or service they asked about. Your dashboard ranks who to call first, with the reasons shown.',
+    tag: 'Lead scoring',
   },
   {
     num: '05',
-    title: 'SMS Follow-Ups',
-    desc: 'Confirmations, reminders, and Google review nudges sent automatically after every interaction.',
-    tag: 'Auto-send',
+    title: 'Knows When to Get a Human',
+    desc: 'Price negotiation, complaints, VIPs — the AI pages your team by text and email with the full conversation attached, then steps aside. No dead ends, no "let me transfer you" loops.',
+    tag: 'Smart handoff',
   },
   {
     num: '06',
-    title: 'Custom Dashboard',
-    desc: 'All calls, leads, and bookings flow into a dashboard built specifically for how your business runs.',
-    tag: 'Your data',
+    title: 'Reviews on Autopilot',
+    desc: 'After a completed visit, happy customers get one friendly nudge to your Google review page — perfectly timed, never spammy, one ask per customer ever.',
+    tag: 'Reputation',
   },
   {
     num: '07',
-    title: 'Email Automation',
-    desc: 'Instantly replies to emails, handles inquiries, and ensures no lead or message goes unanswered.',
-    tag: 'Auto-reply',
+    title: 'Proof, Not Promises',
+    desc: 'Your dashboard shows response times, after-hours leads captured, appointments booked, show rates, and the actual dollars recovered — plus a weekly report in your inbox every Monday.',
+    tag: 'Revenue tracking',
   },
   {
     num: '08',
     title: 'Custom Built For You',
-    desc: 'Not a template bot. Built around your services, workflow, and goals.',
+    desc: 'Not a template bot. A dealership gets test drives and trade-ins; a dental office gets cleanings and recalls. Your services, your hours, your voice.',
     tag: 'Fully custom',
   },
 ]
@@ -196,16 +196,30 @@ export default function FeatureScroll() {
           {sprayed ? (
             <div className={styles.grid}>
               {features.map((f, i) => (
-                <div
+                <motion.div
                   key={i}
                   className={styles.gridCard}
-                  style={{ '--gi': i } as CSSProperties}
+                  initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: i * 0.07,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
+                  whileHover={{
+                    y: -14,
+                    scale: 1.05,
+                    boxShadow:
+                      '0 0 0 1px rgba(32,159,168,0.4), 0 12px 24px rgba(32,159,168,0.25), 0 28px 56px rgba(32,159,168,0.2)',
+                    borderColor: 'rgba(32,159,168,0.5)',
+                    transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+                  }}
                 >
                   <div className={styles.cardNum}>{f.num}</div>
                   <span className={styles.cardTag}>{f.tag}</span>
                   <h3 className={styles.cardTitle}>{f.title}</h3>
                   <p className={styles.cardDesc}>{f.desc}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           ) : (

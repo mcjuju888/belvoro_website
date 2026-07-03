@@ -10,6 +10,18 @@ function escapeHtml(s: unknown): string {
     .replace(/'/g, '&#039;')
 }
 
+// Simple in-memory rate limit (per serverless instance — good enough to stop
+// naive form spam; the honeypot catches most bots before this).
+const hits = new Map<string, number[]>()
+function rateLimited(key: string, max: number, windowMs: number): boolean {
+  const now = Date.now()
+  const list = (hits.get(key) ?? []).filter((t) => t > now - windowMs)
+  if (list.length >= max) return true
+  list.push(now)
+  hits.set(key, list)
+  return false
+}
+
 export async function POST(req: Request) {
   try {
     const apiKey = process.env.RESEND_API_KEY
@@ -21,9 +33,11 @@ export async function POST(req: Request) {
       )
     }
 
-    const resend = new Resend(apiKey)
+    const body = await req.json().catch(() => null)
+    if (!body || typeof body !== 'object') {
+      return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
+    }
 
-    const body = await req.json()
     const {
       fullName,
       businessName,
@@ -32,15 +46,39 @@ export async function POST(req: Request) {
       industry,
       callVolume,
       message,
-    } = body
+      website, // honeypot
+    } = body as Record<string, unknown>
 
-    const subjectBusiness = String(businessName ?? '').slice(0, 200)
+    // Bots fill the hidden field — pretend success and drop it
+    if (typeof website === 'string' && website.trim() !== '') {
+      return NextResponse.json({ success: true })
+    }
 
-    const toEmail =
-      process.env.CONTACT_TO_EMAIL?.trim() || 'belvoroai@gmail.com'
+    // Server-side validation (mirrors the required fields on the form)
+    const name = String(fullName ?? '').trim()
+    const emailStr = String(email ?? '').trim()
+    if (!name || name.length > 200) {
+      return NextResponse.json({ error: 'Please enter your name.' }, { status: 400 })
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr) || emailStr.length > 320) {
+      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
+    }
+
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+    if (rateLimited(`contact:${ip}`, 5, 3600000) || rateLimited(`contact-email:${emailStr.toLowerCase()}`, 3, 3600000)) {
+      return NextResponse.json(
+        { error: 'Too many submissions — please try again later or email us directly.' },
+        { status: 429 },
+      )
+    }
+
+    const resend = new Resend(apiKey)
+    const subjectBusiness = String(businessName ?? '').slice(0, 200) || name
+    const toEmail = process.env.CONTACT_TO_EMAIL?.trim() || 'belvoroai@gmail.com'
+    const fromEmail = process.env.CONTACT_FROM_EMAIL?.trim() || 'Belvoro Website <onboarding@resend.dev>'
 
     await resend.emails.send({
-      from: 'Belvoro Website <onboarding@resend.dev>',
+      from: fromEmail,
       to: toEmail,
       subject: `New Lead: ${subjectBusiness}`,
       html: `
@@ -52,9 +90,9 @@ export async function POST(req: Request) {
         <p><strong>Industry:</strong> ${escapeHtml(industry)}</p>
         <p><strong>Monthly Call Volume:</strong> ${escapeHtml(callVolume)}</p>
         <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\r?\n/g, '<br />')}</p>
+        <p>${escapeHtml(String(message ?? '').slice(0, 5000)).replace(/\r?\n/g, '<br />')}</p>
       `,
-      replyTo: String(email ?? ''),
+      replyTo: emailStr,
     })
 
     return NextResponse.json({ success: true })

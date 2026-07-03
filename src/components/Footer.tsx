@@ -1,9 +1,19 @@
+'use client'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from './Footer.module.css'
+
+const EASE = [0.16, 1, 0.3, 1] as const
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <motion.footer
+      className={styles.footer}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.6, ease: EASE }}
+    >
       <div className={styles.inner}>
 
         <div className={styles.left}>
@@ -78,6 +88,6 @@ export default function Footer() {
           <a href="/terms" className={styles.bottomLink}>Terms</a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
