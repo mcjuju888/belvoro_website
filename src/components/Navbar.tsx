@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Navbar.module.css'
 
@@ -31,14 +30,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: EASE }}
     >
       <Link href="/" className={styles.logoLink}>
-        <Image
-          src="/logo.png"
-          alt="Belvoro AI"
-          width={160}
-          height={44}
-          className={styles.logoImg}
-          priority
-        />
+        <span className={styles.wordmark}>Belvoro <i>AI</i></span>
       </Link>
 
       <div className={styles.links}>
