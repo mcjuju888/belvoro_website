@@ -19,6 +19,21 @@ interface SliderCfg {
   format: (v: number) => string
 }
 
+interface Preset {
+  key: string
+  label: string
+  values: { inquiries: number; missedPct: number; closeRate: number; avgValue: number }
+}
+
+// Starting points per industry. Sale value = revenue per closed customer:
+// the vehicle for a dealership, first-year treatment value for dental,
+// average ticket for service businesses.
+const PRESETS: Preset[] = [
+  { key: 'auto',    label: 'Auto Dealership',  values: { inquiries: 350, missedPct: 28, closeRate: 10, avgValue: 32000 } },
+  { key: 'dental',  label: 'Dental & Clinics', values: { inquiries: 180, missedPct: 22, closeRate: 35, avgValue: 900 } },
+  { key: 'service', label: 'Service Business', values: { inquiries: 200, missedPct: 25, closeRate: 20, avgValue: 2500 } },
+]
+
 const SLIDERS: SliderCfg[] = [
   { key: 'inquiries', label: 'Inquiries per month (calls, texts, DMs, emails)', min: 20, max: 1000, step: 10, format: (v) => `${v}` },
   { key: 'missedPct', label: 'Missed or answered too late', min: 5, max: 60, step: 1, format: (v) => `${v}%` },
@@ -52,12 +67,13 @@ export default function RevenueCalculator() {
   const sectionRef = useRef(null)
   const inView = useInView(sectionRef, { once: true, margin: '-80px' })
 
-  const [values, setValues] = useState({
-    inquiries: 200,
-    missedPct: 25,
-    closeRate: 20,
-    avgValue: 2500,
-  })
+  const [preset, setPreset] = useState('auto')
+  const [values, setValues] = useState(PRESETS[0].values)
+
+  const applyPreset = (p: Preset) => {
+    setPreset(p.key)
+    setValues(p.values)
+  }
 
   const calc = useMemo(() => {
     const missed = values.inquiries * (values.missedPct / 100)
@@ -121,6 +137,24 @@ export default function RevenueCalculator() {
         </motion.p>
 
         <motion.div
+          className={styles.presetRow}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.12, ease: EASE }}
+        >
+          {PRESETS.map((p) => (
+            <button
+              key={p.key}
+              type="button"
+              className={`${styles.presetBtn} ${preset === p.key ? styles.presetOn : ''}`}
+              onClick={() => applyPreset(p)}
+            >
+              {p.label}
+            </button>
+          ))}
+        </motion.div>
+
+        <motion.div
           className={styles.panel}
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -160,7 +194,7 @@ export default function RevenueCalculator() {
               <div className={styles.resultper}>/ month</div>
               <div className={styles.resultYear}>
                 That&apos;s <CountUp value={calc.recoveredYearly} className={styles.yearNum} /> a year
-                — about {calc.extraCustomers} extra customer{calc.extraCustomers === 1 ? '' : 's'} every month.
+                or about {calc.extraCustomers} extra customer{calc.extraCustomers === 1 ? '' : 's'} every month.
               </div>
               <motion.a
                 href={ctaHref}
@@ -168,7 +202,7 @@ export default function RevenueCalculator() {
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 28px rgba(32,159,168,0.38)' }}
                 whileTap={{ scale: 0.97 }}
               >
-                Recover it — Get Started
+                Recover It: Get Started
               </motion.a>
             </div>
           </div>
@@ -176,7 +210,7 @@ export default function RevenueCalculator() {
           <div className={styles.disclaimer}>
             Estimate assumes Belvoro engages {Math.round(RECOVERY_RATE * 100)}% of missed inquiries instantly and
             multi-touch follow-up revives {Math.round(FOLLOWUP_LIFT * 100)}% of leads that would otherwise go cold.
-            Your numbers depend on your market — we&apos;ll show you real figures in your dashboard.
+            Your numbers depend on your market; we&apos;ll show you real figures in your dashboard.
           </div>
         </motion.div>
       </div>

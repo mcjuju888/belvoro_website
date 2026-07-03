@@ -40,6 +40,42 @@
   text-align: center;
 }
 
+.presetRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.presetBtn {
+  border: 1px solid #E0E3E4;
+  background: #fff;
+  color: #777;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 24px;
+  transition: all 0.18s;
+  font-family: inherit;
+}
+
+.presetBtn:hover {
+  border-color: #209FA8;
+  color: #209FA8;
+}
+
+.presetOn {
+  background: #1C2023;
+  border-color: #1C2023;
+  color: #fff;
+}
+
+.presetOn:hover {
+  border-color: #1C2023;
+  color: #fff;
+}
+
 .panel {
   max-width: 1040px;
   margin: 0 auto;

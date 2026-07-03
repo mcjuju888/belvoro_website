@@ -8,7 +8,7 @@ export default function GetStarted() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
-  // Honeypot — humans never see or fill this
+  // Honeypot: humans never see or fill this
   const [website, setWebsite] = useState('')
 
   const [formData, setFormData] = useState({
@@ -32,7 +32,7 @@ export default function GetStarted() {
     if (!recovered) return
     setFormData(prev => prev.message ? prev : ({
       ...prev,
-      message: `I used the revenue calculator: ~${inquiries} inquiries/month with ${missed}% missed — it estimated $${Number(recovered).toLocaleString()}/month recoverable. I'd like to see what that looks like for my business.`,
+      message: `I used the revenue calculator: ~${inquiries} inquiries/month with ${missed}% missed. It estimated $${Number(recovered).toLocaleString()}/month recoverable. I'd like to see what that looks like for my business.`,
     }))
   }, [])
 
@@ -73,7 +73,7 @@ export default function GetStarted() {
       <main className={styles.main}>
         <div className={styles.container}>
 
-          {/* LEFT — Form */}
+          {/* LEFT: Form */}
           <div className={styles.formCard}>
             {submitted ? (
               <div className={styles.successState}>
@@ -96,7 +96,7 @@ export default function GetStarted() {
                 </p>
 
                 <form className={styles.form} onSubmit={handleSubmit}>
-                  {/* Honeypot — hidden from humans, bots fill it and get silently dropped */}
+                  {/* Honeypot: hidden from humans, bots fill it and get silently dropped */}
                   <input
                     type="text"
                     name="website"
@@ -222,7 +222,7 @@ export default function GetStarted() {
             )}
           </div>
 
-          {/* RIGHT — Info panel */}
+          {/* RIGHT: Info panel */}
           <div className={styles.infoPanel}>
             <h2 className={styles.infoHeading}>
               What happens <i>next</i>

@@ -10,7 +10,7 @@ function escapeHtml(s: unknown): string {
     .replace(/'/g, '&#039;')
 }
 
-// Simple in-memory rate limit (per serverless instance — good enough to stop
+// Simple in-memory rate limit (per serverless instance, good enough to stop
 // naive form spam; the honeypot catches most bots before this).
 const hits = new Map<string, number[]>()
 function rateLimited(key: string, max: number, windowMs: number): boolean {
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       website, // honeypot
     } = body as Record<string, unknown>
 
-    // Bots fill the hidden field — pretend success and drop it
+    // Bots fill the hidden field. Pretend success and drop it.
     if (typeof website === 'string' && website.trim() !== '') {
       return NextResponse.json({ success: true })
     }
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
     if (rateLimited(`contact:${ip}`, 5, 3600000) || rateLimited(`contact-email:${emailStr.toLowerCase()}`, 3, 3600000)) {
       return NextResponse.json(
-        { error: 'Too many submissions — please try again later or email us directly.' },
+        { error: 'Too many submissions. Please try again later or email us directly.' },
         { status: 429 },
       )
     }

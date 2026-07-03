@@ -6,10 +6,10 @@ import styles from './StatsBar.module.css'
 const EASE = [0.16, 1, 0.3, 1] as const
 
 const stats = [
-  { num: '6', label: 'Channels answered by one AI —\ncalls, SMS, email, IG, FB, web chat.' },
+  { num: '6', label: 'Channels answered by one AI:\ncalls, SMS, email, IG, FB, web chat.' },
   { num: '<10s', label: 'Typical first response.\nAny hour, any channel.' },
   { num: '0', label: 'Leads that go cold without\nan automated follow-up.' },
-  { num: '100%', label: 'Of recovered revenue tracked\nin your dashboard — not vibes.' },
+  { num: '100%', label: 'Of recovered revenue tracked\nin your dashboard. Not vibes.' },
 ]
 
 export default function StatsBar() {

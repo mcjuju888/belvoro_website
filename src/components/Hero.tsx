@@ -29,7 +29,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className={styles.sub} {...fadeUp(0.32)}>
-            Belvoro answers every call, text, DM, email, and website chat — books real appointments against your live calendar, follows up until leads convert, and shows you the revenue it recovered. One AI, every channel, built around your business.
+            Belvoro answers every call, text, DM, email, and website chat. It books real appointments against your live calendar, follows up until leads convert, and shows you the revenue it recovered. One AI, every channel, built around your business.
           </motion.p>
 
           <motion.div className={styles.btns} {...fadeUp(0.44)}>

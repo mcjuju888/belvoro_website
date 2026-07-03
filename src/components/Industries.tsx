@@ -8,9 +8,9 @@ const EASE = [0.16, 1, 0.3, 1] as const
 const industries = [
   {
     title: 'Auto Dealerships',
-    desc: 'An AI BDC that works every lead like your best rep on their best day — around the clock.',
+    desc: 'An AI BDC that works every lead like your best rep on their best day, around the clock.',
     tags: [
-      'Live inventory answers — never invents a car or a price',
+      'Live inventory answers, never an invented car or price',
       'Test drives booked against real availability',
       'Trade-in & financing intake, handed to F&I',
       'After-hours leads captured while you’re closed',
@@ -18,7 +18,7 @@ const industries = [
   },
   {
     title: 'Dental & Clinics',
-    desc: 'Same platform, different language — patients, visits, and recalls instead of leads and test drives.',
+    desc: 'Same platform, different language: patients, visits, and recalls instead of leads and test drives.',
     tags: [
       'Cleanings & consults booked with reminders',
       'No-show defense: 24h and 2h confirmations',
@@ -28,9 +28,9 @@ const industries = [
   },
   {
     title: 'Any Appointment Business',
-    desc: 'Salons, physio, trades, training centres — if bookings drive revenue, Belvoro fits in days.',
+    desc: 'Salons, physio, trades, training centres: if bookings drive revenue, Belvoro fits in days.',
     tags: [
-      'Your services, hours, and vocabulary — not a template',
+      'Your services, hours, and vocabulary, not a template',
       'Lead scoring so hot inquiries get called first',
       'Human handoff with the full conversation attached',
       'Weekly report: leads, bookings, revenue recovered',
@@ -71,7 +71,7 @@ export default function Industries() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.18, ease: EASE }}
         >
-          Belvoro adapts to your operation — appointments,
+          Belvoro adapts to your operation: appointments,
           sales, or high-volume routing.
         </motion.p>
 

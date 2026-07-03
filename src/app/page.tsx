@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Ticker from '@/components/Ticker'
 import StatsBar from '@/components/StatsBar'
+import LiveDemo from '@/components/LiveDemo'
 import FeatureScroll from '@/components/FeatureScroll'
 import HowItWorks from '@/components/HowItWorks'
 import RevenueCalculator from '@/components/RevenueCalculator'
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <Ticker />
       <StatsBar />
+      <LiveDemo />
       <FeatureScroll />
       <RevenueCalculator />
       <HowItWorks />

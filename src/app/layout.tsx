@@ -3,8 +3,8 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Belvoro AI — Your Front Desk, On Autopilot',
-  description: 'Belvoro answers every call, text, DM, email, and website chat — books appointments against your live calendar, follows up until leads convert, and shows you the revenue it recovered.',
+  title: 'Belvoro AI | Your Front Desk, On Autopilot',
+  description: 'Belvoro answers every call, text, DM, email, and website chat, books appointments against your live calendar, follows up until leads convert, and shows you the revenue it recovered.',
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
