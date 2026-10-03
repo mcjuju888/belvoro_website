@@ -1,0 +1,334 @@
+/* ── THEMES ──
+   Each /product page picks one; everything below reads these variables. */
+.purple {
+  --accent: #7B6CF0;
+  --accent-soft: #EEEBFD;
+  --accent-text: #6E62D8;
+  --gradient: linear-gradient(90deg, #C9C3F7 0%, #9D92F2 45%, #7B6CF0 100%);
+  --hero-bg: linear-gradient(90deg, #fff 0%, #fff 45%, #F7F5FE 75%, #EFECFD 100%);
+  --hover-border: #DCD7FA;
+  --hover-shadow: rgba(70, 60, 140, 0.1);
+}
+
+.beige {
+  --accent: #9C7048;
+  --accent-soft: #F5ECE1;
+  --accent-text: #87623F;
+  --gradient: linear-gradient(90deg, #E8CDB0 0%, #C99E76 45%, #94643C 100%);
+  --hero-bg: linear-gradient(90deg, #fff 0%, #fff 45%, #FCF9F5 75%, #F7F0E8 100%);
+  --hover-border: #EADCCB;
+  --hover-shadow: rgba(120, 85, 50, 0.12);
+}
+
+.sage {
+  --accent: #6C876E;
+  --accent-soft: #EAF0E8;
+  --accent-text: #5B765D;
+  --gradient: linear-gradient(90deg, #CAD7C5 0%, #9FB39C 45%, #6C876E 100%);
+  --hero-bg: linear-gradient(90deg, #fff 0%, #fff 45%, #F8FAF7 75%, #EFF3EE 100%);
+  --hover-border: #D8E2D5;
+  --hover-shadow: rgba(70, 100, 70, 0.12);
+}
+
+.purple,
+.beige,
+.sage {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── HERO ── */
+.hero {
+  /* White on the left fading into the theme tint on the right. */
+  background: var(--hero-bg);
+  padding: 72px 0 56px;
+  overflow: hidden;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: #23262B;
+  margin-bottom: 22px;
+}
+
+.gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.sub {
+  font-size: 18px;
+  line-height: 1.55;
+  color: #A3A7AE;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+/* Wide screens: explicit lines; narrower screens: normal flowing text. */
+.subLine {
+  display: block;
+}
+
+/* Explicit line breaks only where the column is wide enough for them. */
+@media (max-width: 1179px) {
+  .subLine { display: inline; }
+}
+
+/* Buttons: same style as the homepage hero. */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.btnMain {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #1F2328;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btnMain:hover {
+  background: #000;
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #1C2023;
+  border: 1px solid #ECEDEF;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  transition: border-color 0.15s;
+}
+
+.btnGhost:hover {
+  border-color: #C9CCD1;
+}
+
+.playIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid #1C2023;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+}
+
+.heroArt {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 18px;
+}
+
+.characterImg {
+  display: block;
+  width: 100%;
+  max-width: 406px;
+  height: auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gentle, slow float. */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+/* Desktop: compact hero, the same on all three product pages (matched to the
+   /product/channels design). Full-width background from --hero-bg, ending in a
+   straight line at the bottom of the hero. */
+@media (min-width: 861px) {
+  .hero {
+    padding: 72px 0 16px;
+  }
+  .badge {
+    font-size: 10.3px;
+    padding: 7px 16px;
+  }
+  .heading {
+    font-size: clamp(48px, 5.2vw, 71px);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .sub {
+    font-size: 18.4px;
+    line-height: 1.43;
+    max-width: none;
+    margin-bottom: 10px;
+  }
+  .btnMain { padding: 12px 24px; }
+  .btnGhost { padding: 10px 20px; }
+  /* Character sits just past the middle; its feet (and soft shadow) rest on the
+     hero's bottom edge, cancelling the 16px bottom padding. Sized by height so
+     every character's head and feet land at the same level. */
+  .heroArt {
+    align-self: end;
+    justify-content: flex-start;
+    padding: 0 0 0 10px;
+    margin-bottom: -16px;
+  }
+  .characterImg {
+    height: 349px;
+    width: auto;
+    max-width: none;
+  }
+  .features { padding-top: 34px; }
+}
+
+/* ── FEATURES ── */
+.features {
+  background: #fff;
+  padding: 40px 0 96px;
+}
+
+.featuresInner {
+  display: grid;
+  /* Text column wide enough for the longest two-line heading ("built on real customer data."). */
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.54fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.featuresHeading {
+  /* Shrinks a little on smaller laptops so each heading stays on two lines. */
+  font-size: clamp(26px, 2.3vw, 32px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 14px;
+}
+
+.featuresText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #A3A7AE;
+}
+
+/* Every card the same height (equal rows, stretched cells). */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 16px;
+}
+
+.cell {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #F1F1F4;
+  border-radius: 18px;
+  padding: 18px 18px 22px;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06), 0 1px 3px rgba(17, 24, 39, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--hover-border);
+  box-shadow: 0 14px 32px var(--hover-shadow), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0B0D0F;
+  margin-bottom: 6px;
+}
+
+.cardText {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #A3A7AE;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .featuresInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .heading { font-size: 48px; }
+  .sub { font-size: 16px; margin-bottom: 26px; }
+  .characterImg { max-width: 300px; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding: 48px 0 40px; }
+  .heading { font-size: 40px; }
+  .btnMain, .btnGhost { font-size: 15px; }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .featuresHeading { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transition: none; transform: none; }
+  .characterImg { animation: none; }
+}

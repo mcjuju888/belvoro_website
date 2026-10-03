@@ -34,51 +34,42 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className={styles.section}>
-      <div className="container">
+      <div className={`container ${styles.inner}`}>
         <motion.div
-          className={styles.eyebrow}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
-          Process
-        </motion.div>
-        <motion.h2
-          className={styles.heading}
+          className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+          transition={{ duration: 0.6, ease: EASE }}
         >
-          We handle setup, <i>You handle the business</i>
-        </motion.h2>
-        <motion.p
-          className={styles.sub}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5, delay: 0.18, ease: EASE }}
-        >
-          We handle everything, no technical work required on your end.
-        </motion.p>
+          <span className={styles.badge}>Process</span>
+          <h2 className={styles.heading}>
+            We handle the setup, <span className={styles.gradient}>you handle the business.</span>
+          </h2>
+          <p className={styles.sub}>No technical work required on your end.</p>
+        </motion.div>
 
-        <div className={styles.grid} ref={gridRef}>
+        <motion.div
+          className={styles.card}
+          ref={gridRef}
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
               className={styles.step}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.1, ease: EASE }}
-              whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
+              transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: EASE }}
             >
               <div className={styles.stepNum}>{s.num}</div>
-              <h4 className={styles.stepTitle}>{s.title}</h4>
+              <h3 className={styles.stepTitle}>{s.title}</h3>
               <p className={styles.stepDesc}>{s.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,113 +1,143 @@
 .section {
-  background: #1C2023;
-  padding: 80px 48px;
-  border-bottom: 1px solid #F0F0F0;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  /* Faint lavender on the left fading into faint warm beige on the right. */
+  background: var(--soft-band-bg);
+  padding: 48px 24px;
 }
 
 .inner {
-  background: #F8FDFC;
-  border: 1px solid #D8F0EE;
-  border-radius: 24px;
-  padding: 52px 56px;
-  max-width: 1200px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
-.content {
-  margin-bottom: 36px;
-  min-height: 160px;
+.card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 16px 44px rgba(17, 24, 39, 0.09), 0 1px 3px rgba(17, 24, 39, 0.04);
+  padding: 40px 34px 30px;
+  touch-action: pan-y;
+  overflow: hidden;
+}
+
+.slides {
+  display: grid;
+}
+
+.slide {
+  grid-area: 1 / 1;
+}
+
+.figure {
+  margin: 0;
+}
+
+/* Takes up space but is never seen or read out. */
+.sizer {
+  visibility: hidden;
 }
 
 .quote {
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
-  color: #1C2023;
-  line-height: 1.5;
-  font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.3px;
+  font-size: 21px;
+  line-height: 1.55;
+  color: #3D4249;
+  letter-spacing: -0.01em;
   margin-bottom: 28px;
 }
 
 .attr {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .avatar {
-  width: 42px;
-  height: 42px;
-  background: #1C2023;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background: #1F2328;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
   flex-shrink: 0;
 }
 
 .name {
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 600;
   color: #1C2023;
+  margin-bottom: 2px;
 }
 
-.role {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 2px;
+.company {
+  font-size: 19px;
+  color: #A3A7AE;
 }
 
+/* CONTROLS */
 .controls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 .arrowBtn {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #ECEDEF;
   background: #fff;
-  font-size: 16px;
-  cursor: pointer;
+  color: #1C2023;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
-  color: #1C2023;
+  transition: border-color 0.15s, background 0.15s;
 }
 
+.arrowBtn:hover {
+  border-color: #C9CCD1;
+  background: #F6F7F9;
+}
 
 .dots {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 6px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #E8E8E8;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  width: 7px;
+  height: 7px;
   padding: 0;
-}
-
-.dotActive {
-  background: #209FA8;
-  width: 24px;
+  border: none;
   border-radius: 100px;
+  background: #E3E5E8;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s;
 }
 
-@media (max-width: 768px) {
-  .section { padding: 56px 24px; }
-  .inner { padding: 32px 24px; }
-  .quote { font-size: 18px; }
+.dot:hover {
+  background: #C9CCD1;
+}
+
+.dotActive,
+.dotActive:hover {
+  width: 30px;
+  background: linear-gradient(90deg, #9AB6DB, #4FA2F2);
+}
+
+.arrowBtn:focus-visible,
+.dot:focus-visible {
+  outline: 2px solid #A9CCF6;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .section { padding: 36px 16px; }
+  .card { padding: 26px 22px 22px; }
+  .quote { font-size: 17px; margin-bottom: 22px; }
+  .avatar { width: 48px; height: 48px; font-size: 15px; }
+  .name, .company { font-size: 16px; }
 }

@@ -1,99 +1,92 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import styles from './FeatureScroll.module.css'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
 const features = [
   {
-    num: '01',
-    title: 'Every Channel, One Brain',
-    desc: 'Calls, texts, emails, Instagram DMs, Facebook Messenger, and your website chat. All answered instantly by one AI that recognizes the same person across every channel, with full history.',
-    tag: '6 channels',
+    title: 'Every Channel, One Front Desk',
+    desc: 'Calls, texts, emails, WhatsApp, Instagram and Messenger are answered instantly by one AI, all connected through the same customer history.',
   },
   {
-    num: '02',
-    title: 'Real Appointment Booking',
-    desc: 'Not "someone will call you back." The AI checks your live availability, books against your real calendar with double-booking prevention, and sends reminders so people actually show up.',
-    tag: 'Live scheduling',
+    title: 'Every Conversation, One Place',
+    desc: 'Your team can see and reply to calls, messages, DMs, emails and website chats from one connected inbox instead of jumping between apps.',
   },
   {
-    num: '03',
-    title: 'No Lead Ever Goes Cold',
-    desc: 'When a lead stops replying, the AI follows up at 4 hours, next day, and day 3. Each message is written fresh from the actual conversation. Dormant contacts get re-engaged months later.',
-    tag: 'Auto follow-up',
+    title: 'Never Lose the Customer Context',
+    desc: 'Every conversation, appointment and interaction is stored in one complete customer profile, so your team always knows what happened before.',
   },
   {
-    num: '04',
-    title: 'Hot Leads Rise to the Top',
-    desc: 'Every lead is scored on real buying signals: timeline, budget, the exact car or service they asked about. Your dashboard ranks who to call first, with the reasons shown.',
-    tag: 'Lead scoring',
+    title: 'Appointments That Stay on Track',
+    desc: 'Automatically send appointment confirmations, reminders and follow-ups so customers stay informed and fewer bookings are missed.',
   },
   {
-    num: '05',
-    title: 'Knows When to Get a Human',
-    desc: 'Price negotiation, complaints, VIPs. The AI pages your team by text and email with the full conversation attached, then steps aside. No dead ends, no transfer loops.',
-    tag: 'Smart handoff',
+    title: 'Knows When Your Team Should Step In',
+    desc: 'When a person is needed, Belvoro collects the right information, alerts your team and hands off the conversation with full context attached.',
   },
   {
-    num: '06',
-    title: 'Reviews on Autopilot',
-    desc: 'After a completed visit, happy customers get one friendly nudge to your Google review page. Perfectly timed, never spammy, one ask per customer ever.',
-    tag: 'Reputation',
+    title: 'Turn Great Visits Into Reviews',
+    desc: 'After a completed appointment, Belvoro automatically sends customers a direct link to your Google review page at the right time.',
   },
   {
-    num: '07',
-    title: 'Proof, Not Promises',
-    desc: 'Your dashboard shows response times, after-hours leads captured, appointments booked, show rates, and the actual dollars recovered. Plus a weekly report every Monday.',
-    tag: 'Revenue tracking',
+    title: 'Your Reputation Keeps Moving',
+    desc: 'When a Google review comes in, Belvoro can draft and publish a professional response so your business stays responsive and consistent.',
   },
   {
-    num: '08',
-    title: 'Custom Built For You',
-    desc: 'Not a template bot. A dealership gets test drives and trade-ins; a dental office gets cleanings and recalls. Your services, your hours, your voice.',
-    tag: 'Fully custom',
+    title: 'Reach the Right Customers',
+    desc: 'Belvoro uses customer history, conversations and past activity to find the right audience and create personalized outreach for each person.',
+  },
+  {
+    title: 'Create. Publish. Grow.',
+    desc: 'Enhance photos, create short-form video content, generate captions and publish directly to your social channels from Belvoro.',
+  },
+  {
+    title: 'Keep Your Whole Team Connected',
+    desc: 'Organize staff into departments, assign customers and conversations, and see who handled each interaction from one connected system.',
   },
 ]
 
 export default function FeatureScroll() {
+  const gridRef = useRef<HTMLDivElement>(null)
+  // Start the staggered fade once the grid enters view, so cards appear one after the other.
+  const inView = useInView(gridRef, { once: true, margin: '-80px' })
+
   return (
     <section id="features" className={styles.section}>
       <div className="container">
         <motion.div
-          className={styles.eyebrow}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
-          What Belvoro does
-        </motion.div>
-        <motion.h2
-          className={styles.heading}
+          className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6, delay: 0.05, ease: EASE }}
+          transition={{ duration: 0.6, ease: EASE }}
         >
-          One AI that runs your<br /><i>entire front desk.</i>
-        </motion.h2>
+          <span className={styles.badge}>What Belvoro does</span>
+          <h2 className={styles.heading}>
+            One AI that runs your
+            <br />
+            <span className={styles.gradient}>entire front desk.</span>
+          </h2>
+        </motion.div>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={gridRef}>
           {features.map((f, i) => (
+            // The wrapper handles the fade-in; the inner card owns the hover lift,
+            // so framer's inline transform never fights the CSS :hover transform.
             <motion.div
-              key={f.num}
-              className={styles.card}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: (i % 2) * 0.08 + Math.floor(i / 2) * 0.04, ease: EASE }}
+              key={f.title}
+              className={styles.cell}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
             >
-              <div className={styles.cardTop}>
-                <span className={styles.num}>{f.num}</span>
-                <span className={styles.tag}>{f.tag}</span>
-              </div>
-              <h3 className={styles.cardTitle}>{f.title}</h3>
-              <p className={styles.cardDesc}>{f.desc}</p>
+              <article className={styles.card}>
+                <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+                <h3 className={styles.cardTitle}>{f.title}</h3>
+                <p className={styles.cardDesc}>{f.desc}</p>
+              </article>
             </motion.div>
           ))}
         </div>

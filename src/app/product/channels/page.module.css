@@ -1,0 +1,40 @@
+/* ── CONNECTED CHANNELS (inbox preview) ── */
+.inbox {
+  --purple: #7B6CF0;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  background: linear-gradient(180deg, #fff 0%, #F8F7FE 100%);
+  padding: 24px 0 104px;
+}
+
+.inboxHeading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 44px;
+}
+
+.inboxFrame {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #ECEAFB;
+  background: #fff;
+  /* Soft purple shadow. */
+  box-shadow: 0 30px 70px rgba(123, 108, 240, 0.18), 0 8px 24px rgba(123, 108, 240, 0.08);
+}
+
+.inboxImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 560px) {
+  .inbox { padding-bottom: 72px; }
+  .inboxHeading { font-size: 26px; margin-bottom: 28px; }
+  .inboxFrame { border-radius: 12px; }
+}

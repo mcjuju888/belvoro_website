@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400;1,600&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Soft band: faint lavender on the left to faint warm beige on the right.
+   Shared by the testimonials band and the footer. */
+:root {
+  --soft-band-bg: linear-gradient(100deg, #F1EFFC 0%, #F7F5F8 45%, #F8F3EC 100%);
 }
 
 html {
@@ -24,7 +30,9 @@ body {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+/* Side gutter whenever the viewport is too narrow for the 1200px container plus
+   breathing room (tablets, small laptops), so content never touches the edges. */
+@media (max-width: 1248px) {
   .container {
     padding: 0 24px;
   }

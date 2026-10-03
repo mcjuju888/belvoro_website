@@ -22,8 +22,7 @@ export default function Ticker() {
     <div className={styles.ticker}>
       <div className={styles.track}>
         {allItems.map((item, i) => (
-          <span key={i} className={styles.item}>
-            <span className={styles.dot} />
+          <span key={i} className={styles.item} aria-hidden={i >= items.length}>
             {item}
           </span>
         ))}

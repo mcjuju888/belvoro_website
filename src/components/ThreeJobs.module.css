@@ -1,0 +1,200 @@
+.section {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  background: linear-gradient(180deg, #FAF9FC 0%, #fff 140px);
+  padding: 72px 0 96px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.badge {
+  display: inline-block;
+  background: #DCEBFB;
+  color: #4C93DD;
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.heading span {
+  white-space: nowrap;
+}
+
+.heading {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 16px;
+}
+
+/* Same gradient as "on autopilot." in the hero. */
+.gradient {
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  font-size: 17px;
+  line-height: 1.55;
+  color: #A3A7AE;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.card {
+  /* Keep a linked card clear of the sticky navbar. Includes the 28px the card
+     still slides up while fading in after the jump. */
+  scroll-margin-top: 128px;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.07), 0 1px 3px rgba(17, 24, 39, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.1), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.lavender { background: #EFEEFC; }
+.beige    { background: #F8F3EC; }
+.sage     { background: #EFF2EC; }
+
+.art {
+  position: relative;
+  height: 300px;
+}
+
+.character {
+  position: absolute;
+  bottom: 14px;
+  height: 230px;
+  width: auto;
+  max-width: 82%;
+  object-fit: contain;
+}
+
+/* Card 1: character centred inside a ring of channel icons. */
+.brand .character {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Cards 2 & 3: character to the left, labels/icons on the right. */
+.label .character,
+.line .character {
+  left: 9%;
+}
+
+/* Floaters are centred on their top/left point via framer's x/y = -50%. */
+
+/* Round icon bubbles */
+.bubble {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+  z-index: 1;
+}
+
+.line .bubble {
+  width: 48px;
+  height: 48px;
+}
+
+/* White text pills */
+.pill {
+  position: absolute;
+  white-space: nowrap;
+  background: #fff;
+  color: #1C2023;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 100px;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+  z-index: 1;
+}
+
+.body {
+  padding: 4px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0B0D0F;
+  margin-bottom: 8px;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #A3A7AE;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C2023;
+  align-self: flex-start;
+}
+
+.more span {
+  transition: transform 0.2s ease;
+}
+
+.more:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .section { padding-bottom: 64px; }
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+  .heading { font-size: 34px; }
+  .sub { font-size: 16px; }
+}
+
+@media (max-width: 400px) {
+  .art { height: 260px; }
+  .character { height: 200px; }
+  .pill { font-size: 11px; padding: 7px 11px; }
+}

@@ -1,0 +1,152 @@
+.phone {
+  width: min(380px, 100%);
+  background: #fff;
+  border: 1px solid #E6E7EA;
+  border-radius: 26px;
+  box-shadow: 0 24px 64px rgba(28, 32, 35, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Fixed height: header + 340px of messages + the "booked" bar. */
+  height: 448px;
+}
+
+.phoneHead {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 18px;
+  background: #1C2023;
+  color: #fff;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+/* Round avatar artwork, shown as is. */
+.avatarImg {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+.phoneName {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.phoneStatus {
+  font-size: 11px;
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  display: inline-block;
+}
+
+.phoneTime {
+  margin-left: auto;
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+.msgs {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #F6F7F8;
+  scrollbar-width: none;
+}
+
+.msgs::-webkit-scrollbar { display: none; }
+
+.bubbleRow {
+  display: flex;
+  flex-direction: column;
+  max-width: 82%;
+}
+
+.rowCustomer { align-self: flex-end; align-items: flex-end; }
+.rowAi { align-self: flex-start; align-items: flex-start; }
+
+.bubbleCustomer {
+  background: #1C2023;
+  color: #fff;
+  border-radius: 16px;
+  border-bottom-right-radius: 5px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.bubbleAi {
+  background: #fff;
+  border: 1px solid #E9EAEC;
+  color: #1C2023;
+  border-radius: 16px;
+  border-bottom-left-radius: 5px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.msgTime {
+  font-size: 10px;
+  color: #B9BEC2;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 13px 15px;
+}
+
+.typing i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #B9BEC2;
+  animation: bounce 1.2s infinite;
+}
+
+.typing i:nth-child(2) { animation-delay: 0.15s; }
+.typing i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.bookedBar {
+  background: #EBF9FA;
+  border-top: 1px solid rgba(32, 159, 168, 0.25);
+  color: #18858D;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px 14px;
+}
+
+@media (max-width: 880px) {
+  .phone {
+    width: 100%;
+    height: 408px;
+  }
+}

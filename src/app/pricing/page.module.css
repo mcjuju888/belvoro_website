@@ -1,0 +1,169 @@
+.main {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+.top {
+  background: #fff;
+  padding: 26px 0 96px;
+}
+
+.inner {
+  max-width: 1118px;
+}
+
+/* Banner and cards share one width, as in the design. */
+.banner,
+.plans {
+  max-width: 1070px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.badge {
+  display: inline-block;
+  background: #DCEBFB;
+  color: #4C93DD;
+  border-radius: 100px;
+  padding: 3px 31px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.heading {
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 1.01;
+  letter-spacing: -0.035em;
+  color: #0B0D0F;
+  margin-bottom: 28px;
+}
+
+/* Same gradient as "on autopilot." in the hero. */
+.gradient {
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.sub {
+  font-size: 19px;
+  color: #A3A7AE;
+}
+
+/* "STARTING AT" BANNER */
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 10px;
+  height: 136px;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  border-radius: 18px;
+  background: linear-gradient(110deg, #EFEEFC 0%, #F6F4F6 50%, #F8F4EC 100%);
+  box-shadow: 0 10px 28px rgba(17, 24, 39, 0.1), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.bannerPrice {
+  font-size: 37px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bannerPer {
+  font-size: 19px;
+  color: #A3A7AE;
+}
+
+/* PLAN CARDS: plan name at the top, Get Started button pinned to the bottom. */
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 8px; /* room for the "Most popular" pill */
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 502px;
+  background: #fff;
+  border: 1px solid #F0F1F3;
+  border-radius: 20px;
+  padding: 30px 24px 24px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.07), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.featured {
+  border: 1.5px solid #4FA2F2;
+  box-shadow: 0 14px 36px rgba(62, 156, 246, 0.14), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.popular {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  background: linear-gradient(90deg, #8FB1E0 0%, #4FA2F2 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 16px;
+  border-radius: 100px;
+}
+
+.planName {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0B0D0F;
+  margin-bottom: 8px;
+}
+
+/* Small grey description, as in the design. */
+.planDesc {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #A3A7AE;
+}
+
+
+
+
+
+
+/* Tablet & phone: stack, Growth first */
+/* Tablet & phone: stack, Growth first */
+@media (max-width: 900px) {
+  .plans {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .featured { order: -1; }
+  .plan { min-height: 0; }
+  .banner { height: auto; padding: 26px 16px; }
+  .heading { font-size: 42px; }
+}
+
+@media (max-width: 480px) {
+  .top { padding-top: 40px; }
+  .heading { font-size: 36px; }
+}

@@ -1,6 +1,6 @@
 .footer {
-  background: #fff;
-  border-top: 1px solid #F0F0F0;
+  background: var(--soft-band-bg);
+  border-top: 1px solid #ECE4DA;
 }
 
 .inner {
@@ -28,7 +28,8 @@
   filter: none;
   opacity: 1;
   display: block;
-  margin-left: -34px;
+  /* The artwork starts 2px in from its edge; line its ink up with the tagline. */
+  margin-left: -2px;
 }
 
 .tagline {
@@ -54,7 +55,7 @@
 
 .contactItem svg {
   flex-shrink: 0;
-  color: #209FA8;
+  color: #6FA8EC; /* fallback; the strokes use the blue gradient */
 }
 
 .contactLink {
@@ -106,7 +107,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 48px;
-  border-top: 1px solid #F0F0F0;
+  border-top: 1px solid #E6DCD0;
   display: flex;
   align-items: center;
   justify-content: space-between;

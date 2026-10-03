@@ -1,0 +1,286 @@
+/* Purple accent, same as the rest of /product/channels. */
+.everywhere,
+.voice {
+  --purple: #7B6CF0;
+  --purple-text: #6E62D8;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── YOUR LEADS ARE EVERYWHERE ── */
+.everywhere {
+  background: #fff;
+  padding: 96px 0 72px;
+}
+
+.everywhereInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.heading {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 14px;
+}
+
+/* Light lavender to purple, as in the page hero. */
+.gradient {
+  background: linear-gradient(90deg, #C9C3F7 0%, #9D92F2 45%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #A3A7AE;
+  max-width: 470px;
+  margin-bottom: 28px;
+}
+
+/* Scattered channel icons */
+.icons {
+  list-style: none;
+  position: relative;
+  height: 270px;
+  max-width: 460px;
+}
+
+.iconSpot {
+  position: absolute;
+  /* Centred on its (left, top) point via framer's x/y. */
+}
+
+.iconFloat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation-name: drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  filter: drop-shadow(0 6px 12px rgba(17, 24, 39, 0.12));
+}
+
+.icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+/* Icons that aren't a coloured circle themselves sit on a white disc. */
+.iconBubble {
+  background: #fff;
+}
+
+.iconBubble svg {
+  width: 24px;
+  height: 24px;
+}
+
+.iconLabel {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #23262B;
+  text-align: center;
+  max-width: 92px;
+}
+
+/* Chat + overlapping call screen */
+.demo {
+  position: relative;
+  /* Call screen (190px) overlaps the chat by 12px: only the chat's empty right
+     margin, so no message bubble or header text is covered. */
+  padding-right: 178px;
+  max-width: 500px;
+  justify-self: end;
+  width: 100%;
+}
+
+.demo .chat {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.callScreen {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: -36px;
+  width: 190px;
+  container-type: inline-size;
+}
+
+.callImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Soft purple shadow (follows the phone shape, since the PNG is transparent). */
+  filter: drop-shadow(0 22px 40px rgba(123, 108, 240, 0.28));
+}
+
+/* Sits exactly where "00:04" was in the artwork, scaled with the image. */
+.callTimer {
+  position: absolute;
+  left: 50%;
+  top: 54.06%;
+  transform: translate(-50%, -50%);
+  font-size: 6.15cqw;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #67647F;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── NATURAL CONVERSATION ── */
+.voice {
+  background: #fff;
+  padding: 24px 0 96px;
+}
+
+.voiceCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 32px;
+  min-height: 380px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(120deg, #F1EFFD 0%, #ECE9FC 55%, #E9E5FB 100%);
+  box-shadow: 0 16px 44px rgba(123, 108, 240, 0.1);
+}
+
+/* Character is cut off by the bottom edge of the card. */
+.voiceArt {
+  align-self: stretch;
+  position: relative;
+  min-height: 380px;
+}
+
+.voiceCharacter {
+  position: absolute;
+  left: 12%;
+  bottom: -90px;
+  width: 340px;
+  max-width: 82%;
+  height: auto;
+  animation: voiceFloat 7s ease-in-out infinite;
+}
+
+@keyframes voiceFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.voiceCopy {
+  padding: 48px 48px 48px 0;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple-text);
+  margin-bottom: 14px;
+}
+
+.voiceHeading {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 14px;
+}
+
+.voiceText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #8A8F98;
+  max-width: 460px;
+  margin-bottom: 26px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .everywhereInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .demo { justify-self: center; }
+}
+
+@media (max-width: 860px) {
+  .voiceCard {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .voiceArt {
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 36px;
+  }
+  .voiceCharacter {
+    position: static;
+    width: 200px;
+    max-width: 60%;
+  }
+  .voiceCopy { padding: 24px 28px 32px; }
+  .voiceHeading { font-size: 28px; }
+}
+
+/* Phone: text, icons, then the chat with the call screen under it (no overlap). */
+@media (max-width: 560px) {
+  .everywhere { padding: 64px 0 48px; }
+  .heading { font-size: 30px; }
+  .icons { height: 300px; }
+  .demo {
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .demo .chat { height: 400px; }
+  .callScreen {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 200px;
+  }
+  .voice { padding-bottom: 72px; }
+  .voiceCopy { padding: 20px 22px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconFloat, .voiceCharacter { animation: none; }
+}

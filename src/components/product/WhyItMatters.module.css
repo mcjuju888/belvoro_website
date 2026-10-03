@@ -1,0 +1,109 @@
+/* Theme colours (same values as ProductIntro). */
+.purple {
+  --accent: #7B6CF0;
+  --accent-soft: #EEEBFD;
+  --hover-border: #DCD7FA;
+  --hover-shadow: rgba(70, 60, 140, 0.1);
+}
+
+.beige {
+  --accent: #9C7048;
+  --accent-soft: #F5ECE1;
+  --hover-border: #EADCCB;
+  --hover-shadow: rgba(120, 85, 50, 0.12);
+}
+
+.sage {
+  --accent: #6C876E;
+  --accent-soft: #EAF0E8;
+  --hover-border: #D8E2D5;
+  --hover-shadow: rgba(70, 100, 70, 0.12);
+}
+
+.why {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  background: #fff;
+  /* Little bottom padding: the call-to-action below brings its own 88px. */
+  padding: 8px 0 24px;
+}
+
+.heading {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 8px;
+}
+
+.sub {
+  font-size: 16px;
+  color: #A3A7AE;
+  margin-bottom: 28px;
+}
+
+/* One row of 4; equal rows + stretched cells keep every card the same height. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 18px;
+}
+
+.cell {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #F1F1F4;
+  border-radius: 18px;
+  padding: 20px 20px 26px;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06), 0 1px 3px rgba(17, 24, 39, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--hover-border);
+  box-shadow: 0 14px 32px var(--hover-shadow), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0B0D0F;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #A3A7AE;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .heading { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover { transition: none; transform: none; }
+}

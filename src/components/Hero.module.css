@@ -1,145 +1,194 @@
 .hero {
-  padding: 96px 0 60px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
   background: #fff;
-  border-bottom: 1px solid #F0F0F0;
+  /* Sit under the transparent sticky navbar (76px tall) so the backdrop shows behind it. */
+  margin-top: -76px;
+  padding: 160px 0 56px;
 }
 
+/* BACKDROP: photo of a bright interior, fading into white on the left */
+.backdrop {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 66%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 48%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 48%);
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  background: url('/hero-bg.jpg') center / cover no-repeat;
+}
+
+/* CONTENT */
 .heroContent {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 64px;
-  align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
-/* LEFT */
+/* Wide screens: the centred column would push the text further right than 200px;
+   keep it 200px from the left edge instead (narrower screens are unchanged). */
+@media (min-width: 1616px) {
+  .heroContent {
+    margin-left: 200px;
+  }
+}
+
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid #E8E8E8;
+  display: inline-block;
+  background: #DCEBFB;
+  color: #4C93DD;
   border-radius: 100px;
-  padding: 6px 14px 6px 8px;
-  margin-bottom: 32px;
-}
-
-.badgeDot {
-  width: 22px;
-  height: 22px;
-  background: #EBF9FA;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.badgeDot span {
-  width: 8px;
-  height: 8px;
-  background: #209FA8;
-  border-radius: 50%;
-  display: block;
-}
-
-.badgeText {
+  padding: 7px 14px;
   font-size: 12px;
-  color: #888;
-  font-weight: 400;
-}
-
-.heading {
-  font-family: 'Fraunces', serif;
-  font-size: 64px;
-  line-height: 1.0;
-  color: #1C2023;
-  letter-spacing: -2px;
-  font-weight: 300;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 24px;
 }
 
-.heading i {
-  font-style: italic;
-  color: #209FA8;
+.heading {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: #0B0D0F;
+  margin-bottom: 22px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Keep descenders (p) from being clipped. */
+  padding-bottom: 0.08em;
 }
 
 .sub {
-  font-size: 16px;
-  color: #888;
-  line-height: 1.75;
-  max-width: 420px;
-  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #A3A7AE;
+  max-width: 600px;
   margin-bottom: 40px;
 }
 
 .btns {
   display: flex;
-  gap: 10px;
+  gap: 14px;
   align-items: center;
+  margin-bottom: 32px;
 }
 
 .btnMain {
-  background: #209FA8;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #1F2328;
   color: #fff;
-  padding: 13px 28px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 500;
   transition: background 0.15s;
 }
 
 .btnMain:hover {
-  background: #18858D;
+  background: #000;
 }
 
 .btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   background: #fff;
   color: #1C2023;
-  border: 1px solid #E8E8E8;
-  padding: 12px 24px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 400;
+  border: 1px solid #ECEDEF;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
   transition: border-color 0.15s;
 }
 
 .btnGhost:hover {
-  border-color: #bbb;
+  border-color: #C9CCD1;
 }
 
-/* RIGHT: Dashboard image */
-.right {
-  padding-top: 8px;
-  overflow: visible;
+.playIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid #1C2023;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
 }
 
-.heroImage {
-  width: 130%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin-left: -50%;
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.trustText {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #A3A7AE;
+}
+
+.trustText strong {
+  font-weight: 600;
+  color: #9A9EA5;
 }
 
 @media (max-width: 900px) {
-  .hero {
-    padding: 60px 0 48px;
+  .backdrop {
+    width: 100%;
+    opacity: 0.6;
   }
-  .heroContent {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .heading { font-size: 48px; }
-  .right { display: none; }
+  .heading { font-size: 56px; }
+  .sub { font-size: 18px; }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 48px 0px 48px;
-    gap: 0;
+    margin-top: -60px;
+    padding: 108px 0 40px;
   }
-  .heroContent {
-    gap: 0;
-  }
-  .right {
-    display: none;
-  }
+  .heading { font-size: 42px; }
+  .sub { font-size: 16px; margin-bottom: 28px; }
+  .btns { flex-wrap: wrap; }
+  .btnMain, .btnGhost { font-size: 15px; }
+  .badge { font-size: 11px; }
 }

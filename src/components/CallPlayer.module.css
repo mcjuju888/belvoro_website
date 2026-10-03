@@ -1,0 +1,57 @@
+.player {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #F5F8FC;
+  border-radius: 20px;
+  padding: 22px 26px 22px 22px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.07), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.play {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: #1F2328;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.play:hover {
+  background: #000;
+  transform: scale(1.05);
+}
+
+.play svg:only-child path {
+  transform: translateX(1px);
+}
+
+.wave {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.bar,
+.barPlayed {
+  flex: 1;
+  max-width: 3px;
+  min-height: 4px;
+  border-radius: 2px;
+  background: #B4B8BF;
+  transition: background 0.12s linear;
+}
+
+.barPlayed {
+  background: #111316;
+}

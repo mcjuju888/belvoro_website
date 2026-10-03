@@ -1,0 +1,239 @@
+/* Warm beige / brown accent, same as the memory page hero. */
+.shot,
+.history {
+  --accent: #9C7048;
+  --gradient: linear-gradient(90deg, #E8CDB0 0%, #C99E76 45%, #94643C 100%);
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── SCREENSHOT CARD ── */
+.shot {
+  background: #fff;
+  padding: 8px 0 72px;
+}
+
+.shotCard {
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+  /* Same shape as the screenshot; the image fills it once added. */
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  /* Soft warm beige shadow all around. */
+  box-shadow: 0 30px 80px rgba(150, 110, 70, 0.2), 0 8px 24px rgba(150, 110, 70, 0.1);
+}
+
+.shotImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* ── CUSTOMER HISTORY ── */
+.history {
+  background: #fff;
+  padding: 24px 0 72px;
+  /* The scaled glow reaches past the edge; never cause sideways scroll. */
+  overflow-x: clip;
+}
+
+.historyInner {
+  /* Art column takes the design's width; the text sits close beside it.
+     --k scales the design so the character is as tall as the text block. */
+  --k: 1.27;
+  display: grid;
+  grid-template-columns: calc(540px * var(--k)) minmax(0, 1fr);
+  column-gap: calc(68px * var(--k));
+  align-items: start;
+}
+
+/* Left-side art, in the design's 540 x 380 units (x var(--k)). */
+.art {
+  position: relative;
+  width: calc(540px * var(--k));
+  height: calc(380px * var(--k));
+  /* The design's art area begins 35 units above the headline. */
+  margin-top: calc(-35px * var(--k));
+}
+
+/* Soft warm glow behind the character, reaching back behind the arrows. */
+.glow {
+  position: absolute;
+  left: calc(110px * var(--k));
+  top: calc(-60px * var(--k));
+  width: calc(620px * var(--k));
+  height: calc(500px * var(--k));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(226, 214, 204, 0.85) 0%, rgba(234, 225, 218, 0.6) 45%, rgba(244, 239, 235, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* Second, wider haze reaching back behind the arrows so the white strokes read. */
+.glow::before {
+  content: '';
+  position: absolute;
+  left: calc(-70px * var(--k));
+  top: calc(80px * var(--k));
+  width: calc(520px * var(--k));
+  height: calc(380px * var(--k));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(234, 226, 220, 0.6) 0%, rgba(241, 235, 231, 0.4) 55%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* Character, positioned from the design (body 310 units tall). */
+.character {
+  position: absolute;
+  left: calc(262.8px * var(--k));
+  top: calc(41.3px * var(--k));
+  height: calc(338px * var(--k));
+  width: auto;
+  max-width: none;
+}
+
+.facts {
+  list-style: none;
+}
+
+/* Each fact covers the art area; its pill and arrow are placed in design units. */
+.fact {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.factFloat {
+  position: absolute;
+  inset: 0;
+  animation-name: drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.pill {
+  position: absolute;
+  right: calc(var(--right) * 1px * var(--k));
+  top: calc(var(--cy) * 1px * var(--k));
+  transform: translateY(-50%);
+  background: #fff;
+  color: #1C2023;
+  font-size: calc(14px * var(--k));
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+  white-space: nowrap;
+  padding: calc(18px * var(--k)) calc(17px * var(--k));
+  border-radius: calc(16px * var(--k));
+  box-shadow: 0 8px 24px rgba(120, 85, 50, 0.12), 0 1px 3px rgba(17, 24, 39, 0.05);
+  pointer-events: auto;
+}
+
+.pillLine {
+  display: block;
+}
+
+/* White, thick, hand-drawn arrows (visible thanks to the glow behind them). */
+.arrow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  overflow: visible;
+}
+
+.heading {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 14px;
+}
+
+.gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #A3A7AE;
+  max-width: 500px;
+  margin-bottom: 22px;
+}
+
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #6B7079;
+}
+
+.check {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1px;
+}
+
+/* ── RESPONSIVE ── */
+/* Narrower: stack the art above the text, centred, a bit smaller. */
+@media (max-width: 1180px) {
+  .historyInner {
+    --k: 0.85;
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  .art { margin: 0 auto; }
+}
+
+/* Phone: smaller character, labels smaller and stacked on the left, arrows hidden. */
+@media (max-width: 600px) {
+  .shot { padding-bottom: 48px; }
+  .shotCard { border-radius: 14px; }
+  .historyInner { --k: 0.62; }
+  .art { width: 100%; height: 250px; }
+  .glow { left: 0; top: -40px; width: 100%; height: 330px; }
+  .character { left: auto; right: 0; top: 10px; height: 230px; }
+  .pill {
+    right: auto;
+    left: 0;
+    top: var(--m-top);
+    transform: none;
+    font-size: 11.5px;
+    padding: 7px 11px;
+    border-radius: 12px;
+  }
+  .arrow { display: none; }
+  .heading { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .factFloat { animation: none; }
+}

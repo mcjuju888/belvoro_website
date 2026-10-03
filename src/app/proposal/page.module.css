@@ -1,0 +1,120 @@
+.main {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+.top {
+  background: #fff;
+  padding: 48px 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.badge {
+  display: inline-block;
+  background: #DCEBFB;
+  color: #4C93DD;
+  border-radius: 100px;
+  padding: 7px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.heading {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: #0B0D0F;
+  margin-bottom: 16px;
+}
+
+/* Same gradient as "on autopilot." in the homepage hero. */
+.gradient {
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.sub {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #A3A7AE;
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btnDark,
+.btnLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btnDark {
+  background: #1F2328;
+  color: #fff;
+}
+
+.btnDark:hover {
+  background: #000;
+}
+
+.btnLight {
+  display: none; /* phones only */
+  background: #fff;
+  color: #1C2023;
+  border: 1px solid #ECEDEF;
+}
+
+.btnLight:hover {
+  border-color: #C9CCD1;
+}
+
+/* PDF viewer: large white rounded frame with a soft shadow. */
+.viewer {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 56px rgba(17, 24, 39, 0.1), 0 2px 6px rgba(17, 24, 39, 0.05);
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  height: min(1100px, 85vh);
+  min-height: 600px;
+  border: none;
+  border-radius: 12px;
+  background: #F4F5F7;
+}
+
+@media (max-width: 768px) {
+  .heading { font-size: 38px; }
+  .sub { font-size: 16px; }
+  /* Phones: no embedded viewer; offer Download + Open in a new tab. */
+  .viewer { display: none; }
+  .btnLight { display: inline-flex; }
+  .top { padding-bottom: 8px; }
+}

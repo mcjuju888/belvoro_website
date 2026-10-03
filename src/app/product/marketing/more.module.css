@@ -1,0 +1,504 @@
+/* Sage green accent, same values as the marketing page hero. */
+.outreach,
+.studio {
+  --accent: #6C876E;
+  --accent-soft: #EAF0E8;
+  --accent-text: #5B765D;
+  --gradient: linear-gradient(90deg, #CAD7C5 0%, #9FB39C 45%, #6C876E 100%);
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  background: #fff;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0B0D0F;
+  margin-bottom: 14px;
+}
+
+.gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #A3A7AE;
+  max-width: 620px;
+}
+
+/* ── TARGET OUTREACH ── */
+.outreach {
+  padding: 16px 0 72px;
+}
+
+.outreachHeader {
+  margin-bottom: 36px;
+}
+
+.outreachBody {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 2fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.outreachArt {
+  display: flex;
+  justify-content: center;
+}
+
+.outreachCharacter {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  animation: float 6.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Three steps, same height. Each card is a subgrid over 4 shared rows (number,
+   title, text, mockup), so the mockup boxes start on one line even when a
+   title wraps to two lines. */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  column-gap: 16px;
+  row-gap: 0;
+  align-items: stretch;
+}
+
+.step {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  align-content: start;
+  background: #fff;
+  border: 1px solid #F1F1F4;
+  border-radius: 20px;
+  padding: 20px 18px 18px;
+  box-shadow: 0 12px 32px rgba(60, 80, 60, 0.09), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.stepNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #E3E6E2;
+  color: #8A8F98;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.stepTitle {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0B0D0F;
+  margin-bottom: 6px;
+}
+
+.stepText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #A3A7AE;
+  margin-bottom: 16px;
+}
+
+/* Inner mockup boxes follow right after the step text. */
+.mock {
+  align-self: start;
+  border: 1px solid #EEF0EE;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.mockOffer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.offerThumb {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ECEEEC; /* placeholder until the image is added */
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.offerText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.offerTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1C2023;
+}
+
+.skeleton {
+  height: 6px;
+  border-radius: 6px;
+  background: #ECEEEC;
+}
+
+.skeletonShort {
+  width: 60%;
+}
+
+.audience {
+  list-style: none;
+  padding: 4px 12px;
+}
+
+.audience li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: #3D4249;
+}
+
+.audience li + li {
+  border-top: 1px solid #F1F2F1;
+}
+
+.audienceIcon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #F1F3F1;
+  color: #7C8580;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email {
+  padding: 10px 12px 12px;
+}
+
+.emailLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #8A8F98;
+  margin-bottom: 8px;
+}
+
+.emailBody {
+  background: #F3F4F3;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #3D4249;
+}
+
+.emailBody p + p {
+  margin-top: 7px;
+}
+
+/* ── MARKETING STUDIO ── */
+.studio {
+  padding: 40px 0 40px;
+}
+
+.studioInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.studioChecks {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin-top: 24px;
+  max-width: 480px;
+}
+
+.studioChecks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #6B7079;
+}
+
+.check {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Studio mockup. Everything is positioned in % of the stage (and sized in cqw,
+   1cqw = 1% of the stage width) so it scales as one piece. Proportions are
+   measured from the design: right column starts at 62% of the width. */
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  justify-self: end;
+  aspect-ratio: 624 / 422;
+  container-type: inline-size;
+}
+
+/* Car image + thumbnails strip (one artwork). As in the design, its top is level
+   with the tool panel and its bottom with the Publish card; the artwork's own
+   transparent side margins sit just outside the column. */
+.canvas {
+  position: absolute;
+  left: -1.1%;
+  top: 2.1%;
+  bottom: 0;
+  width: 57.5%;
+}
+
+.contain {
+  object-fit: fill;
+  filter: drop-shadow(0 18px 30px rgba(17, 24, 39, 0.16));
+}
+
+/* Placeholders shown until /marketing/new-arrivals.* is added. */
+.placeholderMain {
+  position: absolute;
+  inset: 2% 1% 22% 1%;
+  border-radius: 16px;
+  background: #ECEEEC;
+  transform: perspective(900px) rotateY(8deg);
+}
+
+.placeholderThumbs {
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  bottom: 2%;
+  height: 17%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3%;
+}
+
+.placeholderThumbs i {
+  border-radius: 10px;
+  background: #ECEEEC;
+}
+
+.placeholderThumbs i:first-child {
+  outline: 2px solid #4F8EF7;
+  outline-offset: 1px;
+}
+
+/* Tool panel: top level with the top of the car image. */
+.tools {
+  position: absolute;
+  left: 62%;
+  top: 0;
+  width: 38%;
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.6cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6cqw;
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.08), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+  height: 5.9cqw;
+  padding: 0 2.2cqw;
+  border-radius: 10px;
+  background: #F5F6F5;
+  color: #3D4249;
+  font-size: clamp(7.5px, 2.15cqw, 13.5px);
+}
+
+.toolIcon {
+  display: flex;
+  color: #6B7079;
+}
+
+.toolIcon svg {
+  width: 3.6cqw;
+  height: 3.6cqw;
+}
+
+.toolLabel {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.chevron {
+  width: 1.9cqw;
+  height: 1.9cqw;
+  color: #B4B8BF;
+  flex-shrink: 0;
+}
+
+/* Thick sage arrow: from the car image's right edge into the Publish card's top-left. */
+.curve {
+  position: absolute;
+  left: 54.8%;
+  top: 59.9%;
+  width: 10.5%;
+  color: #8FA08F;
+}
+
+/* Publish card: same width and left edge as the tool panel; its bottom lines up
+   with the bottom of the thumbnails row. */
+.publish {
+  position: absolute;
+  left: 62%;
+  /* The artwork has a transparent strip under the thumbnails (30 of its 1335px);
+     lift the card by that much so both bottoms are level. Canvas is 97.9% of the
+     stage tall, so ~2.2% of the stage (2.04% after sub-pixel rounding, measured). */
+  bottom: 2.04%;
+  width: 38%;
+  height: 28.4%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.6cqw 2.1cqw 2cqw;
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.08), 0 1px 3px rgba(17, 24, 39, 0.04);
+}
+
+.publishTitle {
+  display: block;
+  font-size: clamp(9px, 2.2cqw, 13.5px);
+  font-weight: 600;
+  color: #1C2023;
+  margin-bottom: 1.6cqw;
+}
+
+.publishIcons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1cqw;
+}
+
+.publishIcon {
+  position: relative;
+  display: flex;
+}
+
+.publishIcon svg {
+  width: 6.1cqw;
+  height: 6.1cqw;
+}
+
+.publishCheck {
+  position: absolute;
+  right: -0.4cqw;
+  bottom: -0.4cqw;
+  width: 2.4cqw;
+  height: 2.4cqw;
+  min-width: 11px;
+  min-height: 11px;
+  border-radius: 50%;
+  background: #4B5057;
+  border: 1.5px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.publishCheck svg {
+  width: 60%;
+  height: 60%;
+}
+
+.publishBtn {
+  align-self: flex-start;
+  display: inline-block;
+  background: #23272C;
+  color: #fff;
+  font-size: clamp(8.5px, 2cqw, 12.5px);
+  font-weight: 600;
+  padding: 0.7cqw 3.4cqw;
+  border-radius: 7px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .outreachBody {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .outreachCharacter { max-width: 220px; }
+  .studioInner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .stage { justify-self: center; }
+}
+
+/* Phone: character on top (smaller), cards stacked; studio text first, mockup scaled down. */
+@media (max-width: 760px) {
+  .steps { grid-template-columns: 1fr; grid-template-rows: none; row-gap: 16px; }
+  .step { display: flex; flex-direction: column; grid-row: auto; }
+  .heading { font-size: 30px; }
+  .outreachCharacter { max-width: 180px; }
+}
+
+@media (max-width: 480px) {
+  .studioChecks { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outreachCharacter { animation: none; }
+}
