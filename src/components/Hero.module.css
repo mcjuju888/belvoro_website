@@ -8,20 +8,80 @@
   padding: 160px 0 56px;
 }
 
-/* BACKDROP: photo of a bright interior, fading into white on the left */
-.backdrop {
-  position: absolute;
-  inset: 0 0 0 auto;
-  width: 66%;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 48%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 48%);
-}
+/* BACKDROP: the characters photo on the right, fading into white on the left.
 
-.photo {
+   --w is the photo's width: never so wide that the characters (14.5% to 82% of
+   the photo) reach the text. Either they start right of the subtitle
+   (100vw - 657px), or the photo is short enough (655px) that they start below
+   it, and they always clear the buttons (100vw - 523px). 0.715 = how far from
+   the right edge the purple character sits, as a share of the photo width
+   (the photo's empty right 14% is cropped off-screen). */
+.backdrop {
+  --w: min(66vw, calc((100vw - 523px) / 0.715), max(655px, calc((100vw - 657px) / 0.715)));
   position: absolute;
   inset: 0;
-  background: url('/hero-bg.jpg') center / cover no-repeat;
+  pointer-events: none;
+}
+
+/* The whole photo, shown at 80% of --w (so the characters are 20% smaller and
+   the room to the right of the green character stays in view), full hero height
+   on the right. Fades in from the left and is fully opaque just before the
+   purple character (which starts 14.5% into the photo). */
+.stage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: calc(var(--w) * 0.8);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 6%, rgba(0, 0, 0, 0.75) 10.5%, #000 13.5%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 6%, rgba(0, 0, 0, 0.75) 10.5%, #000 13.5%);
+}
+
+/* Soft blurred copy of the room, filling the frame above the photo. */
+.photoFill {
+  position: absolute;
+  inset: -40px;
+  background: url('/hero-characters.jpg') right 30% / cover no-repeat;
+  filter: blur(22px);
+  opacity: 0.9;
+}
+
+/* The sharp photo, sitting on the bottom edge (the table rests on the feature
+   strip). Its top edge melts into the blurred fill. */
+.photo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(var(--w) * 0.8);
+  max-width: none;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+}
+
+/* Desktop (matched to the design): the group of three (14.6% to 82% of the
+   photo) spans 48% of the screen, the purple character starts at 49% and the
+   green hand ends 3% before the right edge, so the photo is 70.3vw wide and
+   starts at 38.2vw (vw includes the scrollbar, hence slightly under 71.1/38.7) (its plain right edge runs off-screen). Its bottom sits
+   5.5% of its height below the hero, so the laptop rests on the feature strip.
+   The fade completes just before the purple character (16.8% into the frame). */
+@media (min-width: 1281px) {
+  .stage {
+    left: 38.2vw;
+    width: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.75) 12.5%, #000 16.5%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.75) 12.5%, #000 16.5%);
+  }
+  .photo {
+    width: 70.3vw;
+    bottom: calc(70.3vw / 1.727 * -0.055);
+  }
+}
+
+/* Shown only on phones (see below). */
+.mobileImage {
+  display: none;
 }
 
 /* CONTENT */
@@ -173,9 +233,12 @@
 }
 
 @media (max-width: 900px) {
-  .backdrop {
-    width: 100%;
-    opacity: 0.6;
+  /* Tablet: characters stay on the right (sized to clear the buttons and the
+     "Trusted by" line), with a stronger fade. */
+  .backdrop { --w: min(70vw, calc((100vw - 523px) / 0.715)); }
+  .stage {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 7%, rgba(0, 0, 0, 0.6) 11%, #000 14%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 7%, rgba(0, 0, 0, 0.6) 11%, #000 14%);
   }
   .heading { font-size: 56px; }
   .sub { font-size: 18px; }
@@ -191,4 +254,13 @@
   .btns { flex-wrap: wrap; }
   .btnMain, .btnGhost { font-size: 15px; }
   .badge { font-size: 11px; }
+  /* Phones: no background photo; the characters appear under the text instead. */
+  .backdrop { display: none; }
+  .mobileImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 28px;
+    border-radius: 18px;
+  }
 }

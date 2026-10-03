@@ -64,9 +64,12 @@ export default function HowItWorks() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: EASE }}
             >
-              <div className={styles.stepNum}>{s.num}</div>
-              <h3 className={styles.stepTitle}>{s.title}</h3>
-              <p className={styles.stepDesc}>{s.desc}</p>
+              {/* Inner layer lifts on hover, so the step's divider stays put. */}
+              <div className={styles.stepBody}>
+                <div className={styles.stepNum}>{s.num}</div>
+                <h3 className={styles.stepTitle}>{s.title}</h3>
+                <p className={styles.stepDesc}>{s.desc}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

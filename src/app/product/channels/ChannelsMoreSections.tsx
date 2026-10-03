@@ -93,7 +93,7 @@ function clock(seconds: number) {
 }
 
 /** Call screen with a live call timer that counts up while it is on screen. */
-function CallScreen() {
+function CallScreen({ avatar }: { avatar: string | null }) {
   const ref = useRef<HTMLDivElement>(null)
   const visible = useInView(ref, { margin: '-60px' })
   const [seconds, setSeconds] = useState(0)
@@ -118,11 +118,15 @@ function CallScreen() {
         className={styles.callImg}
       />
       <span className={styles.callTimer} aria-hidden="true">{clock(seconds)}</span>
+      {/* Caller photo laid over the artwork's avatar circle (shown once the file exists). */}
+      {avatar && (
+        <Image src={avatar} alt="" width={356} height={356} sizes="120px" className={styles.callAvatar} />
+      )}
     </div>
   )
 }
 
-export default function ChannelsMoreSections() {
+export default function ChannelsMoreSections({ callAvatar }: { callAvatar: string | null }) {
   const iconsRef = useRef<HTMLUListElement>(null)
   const iconsInView = useInView(iconsRef, { once: true, margin: '-80px' })
 
@@ -185,7 +189,7 @@ export default function ChannelsMoreSections() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
           >
             <BellaChat className={styles.chat} />
-            <CallScreen />
+            <CallScreen avatar={callAvatar} />
           </motion.div>
         </div>
       </section>

@@ -142,6 +142,20 @@
   filter: drop-shadow(0 22px 40px rgba(123, 108, 240, 0.28));
 }
 
+/* Covers the artwork's avatar disc (centre 379.5,342.5 on the 760x1393 image,
+   disc radius ~175px); a 178px radius hides its edge while leaving the lavender
+   ring around it visible. In % of the image so it stays aligned at any size. */
+.callAvatar {
+  position: absolute;
+  left: 26.51%;
+  top: 11.81%;
+  width: 46.84%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* Sits exactly where "00:04" was in the artwork, scaled with the image. */
 .callTimer {
   position: absolute;

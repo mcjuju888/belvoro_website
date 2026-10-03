@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
 
@@ -23,9 +24,23 @@ const avatars = [
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      {/* Background photo (/hero-bg.jpg), faded into white on the left. */}
+      {/* Desktop/tablet background: the three characters at the laptop
+          (/hero-characters.jpg), anchored bottom-right so they stay fully visible
+          beside the text. A soft blurred copy of the same room fills the hero
+          above it, and the whole thing fades into white on the left. */}
       <div className={styles.backdrop} aria-hidden="true">
-        <div className={styles.photo} />
+        <div className={styles.stage}>
+        <div className={styles.photoFill} />
+        <Image
+          src="/hero-characters.jpg"
+          alt=""
+          width={943}
+          height={546}
+          priority
+          sizes="(max-width: 768px) 100vw, 70vw"
+          className={styles.photo}
+        />
+        </div>
       </div>
 
       <div className={`container ${styles.heroContent}`}>
@@ -80,6 +95,17 @@ export default function Hero() {
             <span>to capture more leads and drive growth</span>
           </div>
         </motion.div>
+
+        {/* Phones: the characters as a normal picture under the text. */}
+        <Image
+          src="/hero-characters.jpg"
+          alt="Three Belvoro characters working together at a laptop"
+          width={943}
+          height={546}
+          sizes="100vw"
+          loading="eager"
+          className={styles.mobileImage}
+        />
       </div>
     </section>
   )

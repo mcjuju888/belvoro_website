@@ -10,7 +10,8 @@
 
 .track {
   display: inline-flex;
-  animation: scroll 40s linear infinite;
+  /* ~77px/s, the same scrolling speed as before; scale this if the list length changes. */
+  animation: scroll 69.5s linear infinite;
 }
 
 .ticker:hover .track {
