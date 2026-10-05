@@ -26,7 +26,7 @@
 /* The whole photo, shown at 80% of --w (so the characters are 20% smaller and
    the room to the right of the green character stays in view), full hero height
    on the right. Fades in from the left and is fully opaque just before the
-   purple character (which starts 14.5% into the photo). */
+   purple character (which starts 17.5% into the photo). */
 .stage {
   position: absolute;
   top: 0;
@@ -34,8 +34,8 @@
   bottom: 0;
   width: calc(var(--w) * 0.8);
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 6%, rgba(0, 0, 0, 0.75) 10.5%, #000 13.5%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 6%, rgba(0, 0, 0, 0.75) 10.5%, #000 13.5%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7.5%, rgba(0, 0, 0, 0.75) 13%, #000 16.5%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7.5%, rgba(0, 0, 0, 0.75) 13%, #000 16.5%);
 }
 
 /* Soft blurred copy of the room, filling the frame above the photo. */
@@ -52,7 +52,9 @@
 .photo {
   position: absolute;
   left: 0;
-  bottom: 0;
+  /* The laptop's bottom is 85% down the photo (1589x990): sink the photo so the
+     laptop rests on the feature strip. */
+  bottom: calc(var(--w) * 0.8 / 1.605 * -0.15);
   width: calc(var(--w) * 0.8);
   max-width: none;
   height: auto;
@@ -60,22 +62,23 @@
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
 }
 
-/* Desktop (matched to the design): the group of three (14.6% to 82% of the
+/* Desktop (matched to the design): the group of three (17.5% to 82% of the
    photo) spans 48% of the screen, the purple character starts at 49% and the
-   green hand ends 3% before the right edge, so the photo is 70.3vw wide and
-   starts at 38.2vw (vw includes the scrollbar, hence slightly under 71.1/38.7) (its plain right edge runs off-screen). Its bottom sits
-   5.5% of its height below the hero, so the laptop rests on the feature strip.
-   The fade completes just before the purple character (16.8% into the frame). */
+   green hand ends 3% before the right edge, so the photo is 73.6vw wide and
+   starts at 35.6vw (vw includes the scrollbar, hence slightly under 74.4/36).
+   Its plain right side runs off-screen. The laptop's bottom (85% down the
+   photo) rests on the feature strip. The fade completes just before the purple
+   character (20% into the frame). */
 @media (min-width: 1281px) {
   .stage {
-    left: 38.2vw;
+    left: 35.6vw;
     width: auto;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.75) 12.5%, #000 16.5%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.75) 12.5%, #000 16.5%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 9%, rgba(0, 0, 0, 0.75) 15%, #000 19.5%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 9%, rgba(0, 0, 0, 0.75) 15%, #000 19.5%);
   }
   .photo {
-    width: 70.3vw;
-    bottom: calc(70.3vw / 1.727 * -0.055);
+    width: 73.6vw;
+    bottom: calc(73.6vw / 1.605 * -0.15);
   }
 }
 

@@ -34,8 +34,8 @@ export default function Hero() {
         <Image
           src="/hero-characters.jpg"
           alt=""
-          width={943}
-          height={546}
+          width={1589}
+          height={990}
           priority
           sizes="(max-width: 768px) 100vw, 70vw"
           className={styles.photo}
@@ -100,8 +100,8 @@ export default function Hero() {
         <Image
           src="/hero-characters.jpg"
           alt="Three Belvoro characters working together at a laptop"
-          width={943}
-          height={546}
+          width={1589}
+          height={990}
           sizes="100vw"
           loading="eager"
           className={styles.mobileImage}
