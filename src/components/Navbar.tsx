@@ -230,7 +230,7 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.42 }}
       >
-        <a href="https://belvorodashboard.com" className={styles.loginBtn}>Log in</a>
+        <a href="https://belvorodashboard.com/login" className={styles.loginBtn}>Log in</a>
         <motion.a
           href="/get-started"
           className={styles.startBtn}
@@ -263,7 +263,7 @@ export default function Navbar() {
         <span className={styles.panelTitle}>Resources</span>
         <ResourceRows onNavigate={closeAll} />
         <div className={styles.mobileDivider} />
-        <a href="https://belvorodashboard.com" className={styles.mobileLink}>Log in</a>
+        <a href="https://belvorodashboard.com/login" className={styles.mobileLink}>Log in</a>
       </div>
     </motion.nav>
   )
