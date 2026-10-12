@@ -99,16 +99,18 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Phones: the characters as a normal picture under the text. */}
-        <Image
-          src="/hero-characters.jpg"
-          alt="Three Belvoro characters working together at a laptop"
-          width={1589}
-          height={990}
-          sizes="100vw"
-          loading="eager"
-          className={styles.mobileImage}
-        />
+        {/* Phones: the characters as a normal picture under the text, in a 4:3 frame. */}
+        <div className={styles.mobileFrame}>
+          <Image
+            src="/hero-characters.jpg"
+            alt="Three Belvoro characters working together at a laptop"
+            width={1589}
+            height={990}
+            sizes="100vw"
+            loading="eager"
+            className={styles.mobileImage}
+          />
+        </div>
       </div>
     </section>
   )

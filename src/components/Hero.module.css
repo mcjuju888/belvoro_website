@@ -83,7 +83,7 @@
 }
 
 /* Shown only on phones (see below). */
-.mobileImage {
+.mobileFrame {
   display: none;
 }
 
@@ -261,12 +261,24 @@
   .badge { font-size: 11px; }
   /* Phones: no background photo; the characters appear under the text instead. */
   .backdrop { display: none; }
+  .mobileFrame {
+    display: block;
+    aspect-ratio: 4 / 3;
+    margin-top: 16px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  /* The photo fills the frame's height and is centred on the characters (they
+     sit in the middle of the photo, low down), zoomed in slightly from the
+     bottom so the laptop and table edge stay in view with some room around. */
   .mobileImage {
     display: block;
     width: 100%;
-    height: auto;
-    margin-top: 28px;
-    border-radius: 18px;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 100%;
+    transform: scale(1.1);
+    transform-origin: 50% 100%;
   }
 }
 
@@ -274,4 +286,19 @@
 @media (max-width: 560px) {
   .btns { flex-direction: column; align-items: stretch; }
   .btnMain, .btnGhost { justify-content: center; }
+  /* Smaller avatars and text so "Trusted by 100+ businesses" stays on one line,
+     with the rest on the line under it. */
+  .trust { gap: 9px; }
+  .avatar {
+    width: 28px;
+    height: 28px;
+    margin-left: -9px;
+    font-size: 8.5px;
+  }
+  .trustText { font-size: 11.5px; }
+  .trustText strong { font-size: 14px; white-space: nowrap; }
+}
+
+@media (max-width: 340px) {
+  .trustText strong { font-size: 12.5px; }
 }
