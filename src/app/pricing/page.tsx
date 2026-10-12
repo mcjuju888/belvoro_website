@@ -38,7 +38,8 @@ const PLANS: Plan[] = [
   and the line under the cards. Kept here so they can be restored.
 
   Line under the cards: "All plans include setup, training on your business, and ongoing optimization."
-  Card button: "Get Started" linking to /get-started (dark on Growth, white on the others)
+  Card button: "Get Started" linking to CONSULTATION_URL from @/lib/links, opening in a new tab
+  (dark on Growth, white on the others)
 
   const PLAN_DETAILS = [
     {

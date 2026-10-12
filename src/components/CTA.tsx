@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './CTA.module.css'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -34,12 +35,14 @@ export default function CTA() {
         {/* Same buttons as the hero. */}
         <motion.div className={styles.btns} {...fadeUp(0.24)}>
           <motion.a
-            href="/get-started"
+            href={CONSULTATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.btnMain}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            Get Started Free <span aria-hidden="true">→</span>
+            Book a Free Consultation <span aria-hidden="true">→</span>
           </motion.a>
           <motion.a
             href="/watch-demo"

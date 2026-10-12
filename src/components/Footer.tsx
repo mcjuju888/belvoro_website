@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './Footer.module.css'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -83,7 +84,7 @@ export default function Footer() {
           </div>
           <div className={styles.linkGroup}>
             <span className={styles.linkGroupTitle}>Get in touch</span>
-            <a href="/get-started" className={styles.link}>Get Started</a>
+            <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className={styles.link}>Get Started</a>
             <a href="/watch-demo" className={styles.link}>Watch Demo</a>
             <a href="https://belvorodashboard.com/login" className={styles.link}>Client Login</a>
           </div>

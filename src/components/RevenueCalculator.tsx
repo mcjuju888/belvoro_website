@@ -1,6 +1,7 @@
 'use client'
 import { useMemo, useRef, useState, useEffect } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './RevenueCalculator.module.css'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -133,17 +134,6 @@ export default function RevenueCalculator() {
     }
   }, [values])
 
-  const ctaHref = useMemo(() => {
-    // The get-started page reads these to pre-fill the visitor's message.
-    const params = new URLSearchParams({
-      calc: '1',
-      inquiries: String(values.inquiries),
-      missed: String(values.missedPct),
-      recovered: String(calc.recoveredMonthly),
-    })
-    return `/get-started?${params.toString()}`
-  }, [values, calc])
-
   return (
     <section id="calculator" className={styles.section} ref={sectionRef}>
       <div className="container">
@@ -235,7 +225,9 @@ export default function RevenueCalculator() {
                 {calc.extraCustomers} extra customer{calc.extraCustomers === 1 ? '' : 's'} every month
               </div>
               <motion.a
-                href={ctaHref}
+                href={CONSULTATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.cta}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

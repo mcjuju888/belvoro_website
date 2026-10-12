@@ -142,6 +142,7 @@
 
 .btns {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
   align-items: center;
   margin-bottom: 32px;
@@ -157,6 +158,7 @@
   border-radius: 12px;
   font-size: 17px;
   font-weight: 500;
+  white-space: nowrap;
   transition: background 0.15s;
 }
 
@@ -175,6 +177,7 @@
   border-radius: 12px;
   font-size: 17px;
   font-weight: 600;
+  white-space: nowrap;
   transition: border-color 0.15s;
 }
 
@@ -254,7 +257,6 @@
   }
   .heading { font-size: 42px; }
   .sub { font-size: 16px; margin-bottom: 28px; }
-  .btns { flex-wrap: wrap; }
   .btnMain, .btnGhost { font-size: 15px; }
   .badge { font-size: 11px; }
   /* Phones: no background photo; the characters appear under the text instead. */
@@ -266,4 +268,10 @@
     margin-top: 28px;
     border-radius: 18px;
   }
+}
+
+/* Phones: the two buttons stack, full width. */
+@media (max-width: 560px) {
+  .btns { flex-direction: column; align-items: stretch; }
+  .btnMain, .btnGhost { justify-content: center; }
 }

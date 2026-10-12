@@ -2,6 +2,7 @@
 import { useRef, useState, type MouseEvent } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './page.module.css'
 
 function AudioPlayer() {
@@ -150,8 +151,10 @@ export default function WatchDemo() {
           <div className={styles.cta}>
             <p className={styles.ctaText}>Ready to get your own?</p>
             <div className={styles.ctaBtns}>
-              <a href="/get-started" className={styles.btnMain}>Get Started Free</a>
-              <a href="/get-started" className={styles.btnOutline}>Contact Us</a>
+              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className={styles.btnMain}>
+                Book a Free Consultation <span aria-hidden="true">→</span>
+              </a>
+              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className={styles.btnOutline}>Contact Us</a>
             </div>
           </div>
 

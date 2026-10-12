@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import CharacterAvatar, { type CharacterName } from './CharacterAvatar'
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './Navbar.module.css'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -232,7 +233,9 @@ export default function Navbar() {
       >
         <a href="https://belvorodashboard.com/login" className={styles.loginBtn}>Log in</a>
         <motion.a
-          href="/get-started"
+          href={CONSULTATION_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.startBtn}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}

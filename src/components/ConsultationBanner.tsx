@@ -1,3 +1,4 @@
+import { CONSULTATION_URL } from '@/lib/links'
 import styles from './ConsultationBanner.module.css'
 
 export default function ConsultationBanner() {
@@ -14,7 +15,7 @@ export default function ConsultationBanner() {
         </svg>
         <h2 className={styles.heading}>Not Sure Which Plan Is Right for You?</h2>
         <p className={styles.sub}>Book a free call and we&apos;ll recommend the plan that fits your business.</p>
-        <a href="/get-started" className={styles.button}>
+        <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className={styles.button}>
           Get a Free Consultation <span aria-hidden="true">→</span>
         </a>
       </div>
