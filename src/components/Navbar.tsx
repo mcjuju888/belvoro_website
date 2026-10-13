@@ -31,10 +31,9 @@ const SOLUTIONS: { character: CharacterName; title: string; line: string; href: 
   },
 ]
 
-// No destinations yet: these rows are buttons that do nothing until links are added.
-// To link one, add `href` and it renders as a normal link.
+// A row without `href` renders as a button that does nothing until a link is added.
 const RESOURCES: { icon: 'video' | 'doc'; title: string; line: string; href?: string }[] = [
-  { icon: 'video', title: 'Demo Video', line: 'See Belvoro in action' },
+  { icon: 'video', title: 'Demo Video', line: 'See Belvoro in action', href: '/watch-demo' },
   { icon: 'doc', title: 'Business Proposal Document', line: 'Explore features & compare plans', href: '/proposal' },
 ]
 

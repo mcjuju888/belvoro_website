@@ -1,65 +1,67 @@
-.main {
+.section {
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
   background: #fff;
-  min-height: calc(100vh - 62px);
-  padding: 72px 0 96px;
+  padding: 72px 0 24px;
+  text-align: center;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 48px;
+.inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 56px;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  max-width: 640px;
-}
-
-.eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+/* Same pill as the homepage hero. */
+.badge {
+  display: inline-block;
+  background: #DCEBFB;
+  color: #4C93DD;
+  border-radius: 100px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #209FA8;
-  margin-bottom: 14px;
+  margin-bottom: 24px;
 }
 
 .heading {
-  font-family: 'Fraunces', serif;
-  font-size: 52px;
-  font-weight: 300;
-  color: #1C2023;
-  letter-spacing: -1.5px;
-  line-height: 1.05;
-  margin-bottom: 16px;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: #0B0D0F;
+  margin-bottom: 20px;
+  text-wrap: balance;
 }
 
-.heading i {
-  font-style: italic;
-  color: #209FA8;
+/* Same gradient as "on autopilot." in the hero. */
+.gradient {
+  background: linear-gradient(90deg, #9AB6DB 0%, #6FA8EC 45%, #3E9CF6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Keep descenders from being clipped. */
+  padding-bottom: 0.08em;
 }
 
 .sub {
-  font-size: 16px;
-  color: #aaa;
-  line-height: 1.7;
-  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #A3A7AE;
+  max-width: 600px;
+  margin-bottom: 48px;
 }
 
 /* VIDEO */
 .videoWrap {
   width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #E8E8E8;
-  background: #F8F8F8;
-  aspect-ratio: 16 / 9;
-  position: relative;
+  background: #EEF3FA;
+  box-shadow: 0 24px 60px -18px rgba(28, 60, 110, 0.28), 0 4px 14px rgba(28, 60, 110, 0.08);
 }
 
 .video {
@@ -67,254 +69,19 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 20px;
 }
 
-.audioSection {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  padding: 48px 0;
-  border-top: 1px solid #F0F0F0;
-}
-
-.audioLeft {
-  min-width: 0;
-}
-
-.audioLabel {
-  min-width: 0;
-}
-
-.audioEyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #209FA8;
-  margin-bottom: 10px;
-}
-
-.audioTitle {
-  font-family: 'Fraunces', serif;
-  font-size: 28px;
-  font-weight: 300;
-  color: #1C2023;
-  letter-spacing: -0.6px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-
-.audioTitle i {
-  font-style: italic;
-  color: #209FA8;
-}
-
-.audioDesc {
-  font-size: 14px;
-  color: #aaa;
-  line-height: 1.65;
-  font-weight: 300;
-}
-
-.audioRight {
-  display: flex;
-  align-items: center;
-}
-
-/* PLAYER */
-.player {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: #F8FDFC;
-  border: 1px solid #D8F0EE;
-  border-radius: 100px;
-  padding: 14px 20px;
-  width: 100%;
-}
-
-.player .playBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #209FA8;
-  border: none;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.15s, transform 0.15s;
-  padding-left: 2px;
-}
-
-.player .playBtn:hover {
-  background: #18858D;
-  transform: scale(1.05);
-}
-
-.playerMiddle {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.progressBar {
-  height: 4px;
-  background: #D8F0EE;
-  border-radius: 100px;
-  cursor: pointer;
-  position: relative;
-}
-
-.progressFill {
-  height: 100%;
-  background: #209FA8;
-  border-radius: 100px;
-  transition: width 0.1s linear;
-}
-
-.progressThumb {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: #209FA8;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
-}
-
-.times {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #aaa;
-  font-weight: 400;
-  padding: 0 2px;
-}
-
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 100%;
-}
-
-.card {
-  border: 1px solid #F0F0F0;
-  border-radius: 16px;
-  padding: 24px;
-  background: #fff;
-  transition: border-color 0.15s;
-}
-
-.card:hover {
-  border-color: #D8F0EE;
-}
-
-.cardIcon {
-  font-size: 24px;
-  margin-bottom: 14px;
-  display: block;
-}
-
-.cardTitle {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1C2023;
-  margin-bottom: 7px;
-  letter-spacing: -0.2px;
-}
-
-.cardDesc {
-  font-size: 13px;
-  color: #aaa;
-  line-height: 1.65;
-  font-weight: 300;
-}
-
-/* CTA */
-.cta {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.ctaText {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  font-weight: 300;
-  color: #1C2023;
-  letter-spacing: -0.5px;
-}
-
-.ctaBtns {
-  display: flex;
-  gap: 10px;
-}
-
-.btnMain {
-  background: #209FA8;
-  color: #fff;
-  padding: 13px 28px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: background 0.15s;
-}
-
-.btnMain:hover {
-  background: #18858D;
-}
-
-.btnOutline {
-  background: #fff;
-  color: #1C2023;
-  border: 1px solid #E8E8E8;
-  padding: 12px 24px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 400;
-  transition: border-color 0.15s;
-}
-
-.btnOutline:hover {
-  border-color: #bbb;
+@media (max-width: 1024px) {
+  .heading { font-size: 52px; }
+  .sub { font-size: 18px; }
 }
 
 @media (max-width: 768px) {
-  .main {
-    padding: 48px 0 72px;
+  .section {
+    padding: 48px 0 8px;
   }
-  .container {
-    padding: 0 24px;
-    gap: 40px;
-  }
-  .heading {
-    font-size: 38px;
-  }
-  .cards {
-    grid-template-columns: 1fr;
-  }
-  .ctaBtns {
-    flex-direction: column;
-    align-items: center;
-  }
-  .audioSection {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 36px 0;
-  }
+  .badge { font-size: 11px; }
+  .heading { font-size: 40px; }
+  .sub { font-size: 16px; margin-bottom: 32px; }
+  .videoWrap { border-radius: 14px; }
 }
