@@ -194,7 +194,7 @@ export default function MarketingMoreSections({ images }: { images: MarketingIma
                 <div className={`${styles.mock} ${styles.mockOffer}`}>
                   <span className={styles.offerThumb}>
                     {images.winterTire && (
-                      <Image src={images.winterTire} alt="" fill sizes="56px" className={styles.cover} />
+                      <Image src={images.winterTire} alt="Winter tire promotion photo" fill sizes="56px" className={styles.cover} />
                     )}
                   </span>
                   <span className={styles.offerText}>

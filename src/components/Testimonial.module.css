@@ -1,5 +1,5 @@
 .section {
-  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-jakarta), sans-serif;
   /* Faint lavender on the left fading into faint warm beige on the right. */
   background: var(--soft-band-bg);
   padding: 48px 24px;

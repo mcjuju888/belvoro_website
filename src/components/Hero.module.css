@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-jakarta), sans-serif;
   background: #fff;
   /* Sit under the transparent sticky navbar (76px tall) so the backdrop shows behind it. */
   margin-top: -76px;

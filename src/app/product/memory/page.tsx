@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
@@ -8,10 +9,11 @@ import ProductIntro, { type ProductFeature } from '@/components/product/ProductI
 import WhyItMatters from '@/components/product/WhyItMatters'
 import MemoryMoreSections from './MemoryMoreSections'
 
-export const metadata: Metadata = {
-  title: 'Memory & Context | Belvoro AI',
-  description: 'Belvoro keeps track of every conversation, appointment, preference, and interaction, so your team and AI assistant always have the full context.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "AI Front Desk With Customer Memory | Belvoro AI",
+  description: "Belvoro remembers every call, message, appointment and preference, so your AI receptionist and your team always know each customer's full history.",
+  path: '/product/memory',
+})
 
 const iconProps = {
   width: 20,

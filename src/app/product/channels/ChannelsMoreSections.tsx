@@ -120,7 +120,7 @@ function CallScreen({ avatar }: { avatar: string | null }) {
       <span className={styles.callTimer} aria-hidden="true">{clock(seconds)}</span>
       {/* Caller photo laid over the artwork's avatar circle (shown once the file exists). */}
       {avatar && (
-        <Image src={avatar} alt="" width={356} height={356} sizes="120px" className={styles.callAvatar} />
+        <Image src={avatar} alt="Photo of the caller, Sarah Mitchell" width={356} height={356} sizes="120px" className={styles.callAvatar} />
       )}
     </div>
   )

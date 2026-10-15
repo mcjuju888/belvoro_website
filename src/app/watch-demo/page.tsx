@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: 'Demo Video | Belvoro AI',
-  description: 'A 2-minute look at how Belvoro answers, books and follows up for your business.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "Watch the AI Receptionist Demo | Belvoro AI",
+  description: "See in 2 minutes how Belvoro's AI front desk answers customers, books appointments and follows up with leads for your business.",
+  path: '/watch-demo',
+})
 
 export default function WatchDemo() {
   return (
@@ -29,7 +31,7 @@ export default function WatchDemo() {
                 className={styles.video}
                 controls
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster="/belvoro-demo-poster.jpg"
               >
                 <source src="/belvoro-demo.mp4" type="video/mp4" />

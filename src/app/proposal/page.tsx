@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: 'Business Proposal & Plan Comparison | Belvoro AI',
-  description: 'Everything Belvoro can do for your business, and how the three plans compare.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "AI Front Desk Proposal & Plan Comparison | Belvoro AI",
+  description: "Download the Belvoro business proposal: everything our AI receptionist does for your business and how the Essential, Growth and Complete plans compare.",
+  path: '/proposal',
+})
 
 const PDF = '/belvoro-proposal.pdf'
 const DOWNLOAD_NAME = 'Belvoro-Business-Proposal.pdf'

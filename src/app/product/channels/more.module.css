@@ -3,7 +3,7 @@
 .voice {
   --purple: #7B6CF0;
   --purple-text: #6E62D8;
-  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-jakarta), sans-serif;
 }
 
 /* ── YOUR LEADS ARE EVERYWHERE ── */

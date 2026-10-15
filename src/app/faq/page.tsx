@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
@@ -38,10 +39,11 @@ const FAQS: Faq[] = [
   },
 ]
 
-export const metadata: Metadata = {
-  title: 'FAQ | Belvoro AI',
-  description: 'Everything you need to know about Belvoro.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "AI Receptionist FAQ: Setup, Languages & 24/7 | Belvoro",
+  description: "Common questions about Belvoro's AI front desk: how setup works, which businesses it suits, the languages it speaks and 24/7 availability.",
+  path: '/faq',
+})
 
 // schema.org FAQPage so Google can show these questions in search results.
 const faqSchema = {

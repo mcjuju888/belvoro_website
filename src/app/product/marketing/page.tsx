@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
@@ -8,10 +9,11 @@ import ProductIntro, { type ProductFeature } from '@/components/product/ProductI
 import WhyItMatters from '@/components/product/WhyItMatters'
 import MarketingMoreSections from './MarketingMoreSections'
 
-export const metadata: Metadata = {
-  title: 'Outbound Marketing | Belvoro AI',
-  description: 'Follow up automatically, re-engage past customers, run targeted outreach, get more Google reviews and create marketing content, all from the system that already knows your customers.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "AI Follow-Ups, Reviews & Marketing | Belvoro AI",
+  description: "Follow up with leads automatically, win back past customers, get more Google reviews and create social content with Belvoro's AI front desk.",
+  path: '/product/marketing',
+})
 
 const iconProps = {
   width: 20,

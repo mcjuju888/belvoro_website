@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import PricingFAQ from '@/components/PricingFAQ'
 import ConsultationBanner from '@/components/ConsultationBanner'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: 'Pricing | Belvoro AI',
-  description: 'Simple, transparent pricing for Belvoro, the AI front desk. Every plan includes setup, training and ongoing optimization.',
-}
+export const metadata: Metadata = pageMetadata({
+  title: "AI Receptionist Pricing & Plans | Belvoro AI",
+  description: "Compare Belvoro's Essential, Growth and Complete plans and find the AI receptionist plan that fits your business. Book a free consultation.",
+  path: '/pricing',
+})
 
 interface Plan {
   name: string

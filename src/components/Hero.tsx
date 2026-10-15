@@ -34,7 +34,7 @@ export default function Hero() {
         <div className={styles.photoFill} />
         <Image
           src="/hero-characters.jpg"
-          alt=""
+          alt="Three Belvoro characters working together at a laptop"
           width={1589}
           height={990}
           priority
@@ -106,8 +106,8 @@ export default function Hero() {
             alt="Three Belvoro characters working together at a laptop"
             width={1589}
             height={990}
-            sizes="100vw"
-            loading="eager"
+            sizes="(max-width: 768px) 100vw, 70vw"
+            priority
             className={styles.mobileImage}
           />
         </div>

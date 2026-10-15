@@ -21,7 +21,7 @@
 }
 
 .why {
-  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-jakarta), sans-serif;
   background: #fff;
   /* Little bottom padding: the call-to-action below brings its own 88px. */
   padding: 8px 0 24px;

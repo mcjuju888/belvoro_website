@@ -78,7 +78,7 @@ export default function BellaChat({ className }: { className?: string }) {
     <div ref={rootRef} className={`${styles.phone} ${className ?? ''}`}>
       <div className={styles.phoneHead}>
         <div className={styles.avatar}>
-          <Image src="/characters/avatar-channel.png" alt="" width={36} height={36} className={styles.avatarImg} />
+          <Image src="/characters/avatar-channel.png" alt="Bella, the Belvoro AI assistant" width={36} height={36} className={styles.avatarImg} />
         </div>
         <div>
           <div className={styles.phoneName}>Bella · Smart Wheels Auto</div>

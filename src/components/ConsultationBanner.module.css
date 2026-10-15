@@ -1,5 +1,5 @@
 .section {
-  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-inter), var(--font-jakarta), sans-serif;
   /* Soft grey-blue on the left to bright blue on the right. */
   background: linear-gradient(90deg, #9FB4D8 0%, #6FA8EC 50%, #3E9CF6 100%);
   padding: 44px 16px 48px;
