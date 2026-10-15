@@ -86,6 +86,7 @@ export default function Footer() {
             <span className={styles.linkGroupTitle}>Get in touch</span>
             <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className={styles.link}>Get Started</a>
             <a href="/watch-demo" className={styles.link}>Watch Demo</a>
+            <a href="/faq" className={styles.link}>FAQs</a>
             <a href="https://belvorodashboard.com/login" className={styles.link}>Client Login</a>
           </div>
         </div>
